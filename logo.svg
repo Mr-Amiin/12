@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192" role="img" aria-labelledby="title desc">
+  <title id="title">Universal Converter logo</title>
+  <desc id="desc">A modern mark combining a calculator grid and circular conversion arrows.</desc>
+  <rect width="192" height="192" rx="40" fill="#15202e"/>
+  <path d="M45 69c11-22 34-36 60-33 20 2 37 14 47 30" fill="none" stroke="#35c4ba" stroke-width="12" stroke-linecap="round"/>
+  <path d="M149 50l8 27-28-4" fill="none" stroke="#35c4ba" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M147 123c-11 22-34 36-60 33-20-2-37-14-47-30" fill="none" stroke="#f6bd60" stroke-width="12" stroke-linecap="round"/>
+  <path d="M43 142l-8-27 28 4" fill="none" stroke="#f6bd60" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="54" y="74" width="84" height="54" rx="10" fill="#f2f5f7"/>
+  <rect x="66" y="86" width="20" height="12" rx="3" fill="#0f9f9a"/>
+  <rect x="92" y="86" width="34" height="12" rx="3" fill="#15202e"/>
+  <rect x="66" y="106" width="15" height="10" rx="3" fill="#15202e"/>
+  <rect x="87" y="106" width="15" height="10" rx="3" fill="#15202e"/>
+  <rect x="108" y="106" width="18" height="10" rx="3" fill="#f4a83d"/>
+</svg>

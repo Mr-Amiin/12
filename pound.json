@@ -1,0 +1,40 @@
+{
+  "slug": "pound",
+  "name": "Pound",
+  "symbol": "lb",
+  "quantity": "mass (pound-mass; distinct from pound-force)",
+  "system": "Imperial / US customary",
+  "founder_status": "no_single_founder",
+  "founder_note": "No single founder of the pound is historically established. The unit descends from the Roman libra and passed through several competing medieval English weight systems — Tower, troy, merchant's, and avoirdupois — before crown standards and, eventually, a 1959 international agreement fixed today's definition. It was standardized gradually by merchants, monarchs, and governments rather than invented by one person.",
+  "understanding": [
+    "'Pound' does not refer to one historical unit but to a family of related units that have varied by era, region, and purpose; the modern, internationally used pound is specifically the international avoirdupois pound.",
+    "The abbreviation 'lb' comes from the Latin libra, the Roman unit of weight the pound descends from — the full Latin phrase libra pondo meant 'a pound by weight', and 'pondo' is the direct source of the English word 'pound'.",
+    "Strictly, the pound is a unit of mass (pound-mass, sometimes written lbm). A related but distinct unit, the pound-force (lbf), measures the force exerted by one pound of mass under standard gravity and is used in engineering contexts such as thrust and pressure (pounds per square inch); the two are easily and commonly conflated in everyday speech because gravity on Earth's surface is nearly constant.",
+    "The international avoirdupois pound is legally defined as exactly 0.453 592 37 kilograms — an exact, defined relationship rather than a measured approximation, fixed by international treaty in 1959."
+  ],
+  "history": {
+    "intro": "Unlike the kilogram, which has a single documented birth in revolutionary France, the pound's history is a long, layered story of competing regional standards slowly narrowing into one.",
+    "paragraphs": [
+      "The pound's earliest ancestor is the Roman libra, a unit of roughly 328.9 grams divided into 12 unciae (the source of the English word 'ounce'). The libra was carried into Britain during the Roman occupation and left both its name — via 'libra pondo' — and its influence on later English weight systems, even though the exact mass in use shifted considerably over the following centuries.",
+      "Medieval England did not have one pound but several, used for different goods and purposes. The Tower pound, so called because its official standard was kept at the Royal Mint in the Tower of London, weighed about 5,400 grains (roughly 350 grams) and was used for coinage and precious metals. The troy pound, believed to take its name from the French trading town of Troyes, weighed 5,760 grains (about 373 grams) and was divided into 12 troy ounces; it superseded the Tower pound for gold, silver, and gems in 1527 and remains the basis of troy weight used in precious-metals trading today. A separate mercantile or 'London' pound, used for general trade, weighed around 6,750 grains.",
+      "The avoirdupois pound — the ancestor of today's standard pound — emerged among London merchants in the early 14th century, with recorded use around 1303, for weighing wool and other bulk commodities under the system merchants called 'avoir de pois', Old French for 'goods of weight'. Its 16-ounce structure made it more convenient for large-scale trade than the 12-ounce troy pound. Wool merchants used a related 'wool pound' of about 6,992 grains, close enough to 7,000 that Elizabeth I's government formally fixed the avoirdupois pound at exactly 7,000 grains in 1588, the value still used today.",
+      "England's Exchequer maintained physical standards for the pound over the following centuries, periodically replacing them after loss or damage; a set issued in 1588 in bronze remained the UK's national standard until 1824. The Weights and Measures Act of 1824 and later the Act of 1878 gave the avoirdupois pound formal statutory definition in Britain, with the 1878 Act tying it to a platinum standard equivalent to approximately 0.453 592 338 kilograms — a value now sometimes called the 'imperial pound' to distinguish it from the modern international figure.",
+      "In the United States, the Mendenhall Order of 1893 formally tied US customary units, including the pound, to metric standards, treating the pound as a defined fraction of the kilogram rather than an independent artifact. Small discrepancies remained, however, because Britain, the United States, and Commonwealth countries had each calibrated their own physical standards slightly differently.",
+      "These discrepancies were resolved on 1 July 1959, when representatives of the United States, United Kingdom, Canada, Australia, New Zealand, and South Africa signed the International Yard and Pound Agreement. It fixed the international avoirdupois pound at exactly 0.453 592 37 kilograms and the international yard at exactly 0.9144 metres. The US National Bureau of Standards (now NIST) adopted the new value immediately; the United Kingdom followed through its Weights and Measures Act 1963. This is the value used by virtually every country and standards body today, including the converter on this page."
+    ]
+  },
+  "uses": [
+    "In the United States, the avoirdupois pound remains the standard unit for body weight, most food retail packaging, postal and parcel shipping, and countless everyday measurements.",
+    "In the United Kingdom, the pound continues to be used informally and in some retail contexts (particularly body weight and some produce), even though the UK officially adopted the metric system for most trade.",
+    "Several other countries and territories with historical ties to British or American measurement systems, including parts of the Caribbean and some Pacific nations, continue to use the pound in everyday commerce.",
+    "In engineering, the related pound-force (lbf) and units derived from it, such as pounds per square inch (psi) and foot-pounds of torque, remain standard in US manufacturing, aerospace, and automotive industries.",
+    "In precious-metals and gemstone trading, the related troy pound and troy ounce — not the avoirdupois pound — remain the standard units internationally, including for gold and silver pricing.",
+    "In international shipping and logistics involving the United States, freight and package weights are frequently quoted in pounds alongside or instead of kilograms."
+  ],
+  "sources": [
+    {"label": "NIST — International yard and pound, Federal Register notice (1959)", "note": "Official 1959 refinement of the values for the yard and pound adopted by the US National Bureau of Standards"},
+    {"label": "Encyclopaedia Britannica — \"Pound (unit of weight)\"", "note": "History of the Tower, troy, and avoirdupois pounds and their standardization in England"},
+    {"label": "UK Weights and Measures Act 1963, Section 1(1)", "note": "Statutory UK definition of the pound as exactly 0.45359237 kilogram"},
+    {"label": "Sizes.com — \"pound avoirdupois\"", "note": "Detailed account of English pound standards from the Winchester and Exchequer series through the 1588 and 1824 standards"}
+  ]
+}

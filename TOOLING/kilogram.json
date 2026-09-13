@@ -1,0 +1,40 @@
+{
+  "slug": "kilogram",
+  "name": "Kilogram",
+  "symbol": "kg",
+  "quantity": "mass",
+  "system": "SI (International System of Units)",
+  "founder_status": "no_single_founder",
+  "founder_note": "The kilogram was not invented by one person. It emerged from committee work by the French Academy of Sciences during the 1790s, was refined by later international treaty, and was redefined in 2019 based on a fundamental physical constant rather than any individual's design.",
+  "understanding": [
+    "The kilogram is the base unit of mass in the International System of Units (SI) and is the only SI base unit whose name still carries a metric prefix ('kilo-'), a holdover from the unit's origin as one thousand grams.",
+    "Mass, the physical quantity the kilogram measures, describes the amount of matter in an object and its resistance to acceleration; it is distinct from weight, which is the force gravity exerts on that mass and varies with location.",
+    "As an SI base unit, the kilogram underlies a wide range of derived units, including the newton (force), joule (energy), pascal (pressure), and watt (power), all of which are defined in terms of the kilogram, metre, and second."
+  ],
+  "history": {
+    "intro": "The kilogram's story begins not in a laboratory but in the political chaos of pre-revolutionary France, where measurement itself was a source of public grievance.",
+    "paragraphs": [
+      "Before the French Revolution, France used a patchwork of local weights and measures that varied by region and were easily manipulated by merchants and tax collectors; a unit such as the lieue could range from roughly 3.3 kilometres in one province to nearly 5.8 kilometres in another. In the years before the Revolution, King Louis XVI commissioned a review of the country's measurement system to curb this abuse. The task of designing a replacement fell to the French Academy of Sciences, which appointed multiple committees rather than a single designer.",
+      "Charles-Maurice de Talleyrand, then Bishop of Autun, proposed to the National Assembly in 1790 that France adopt a new, rational system of measurement based on constants found in nature rather than a monarch's body or a local artifact. The Academy's committees, which included prominent scientists such as Antoine Lavoisier, developed this proposal into what became the metric system. For length, they chose one ten-millionth of the distance from the North Pole to the Equator along a meridian through Paris, naming it the metre.",
+      "For mass, the Academy initially defined a unit called the grave in 1793 as the mass of one cubic decimetre of water at its temperature of maximum density. Because 'grave' also carried unwanted associations with the aristocratic title 'graf', the decree of 18 Germinal, Year III (7 April 1795) renamed the unit system: the gram became the base unit, defined as the mass of one cubic centimetre of pure water at the melting point of ice, and the kilogram — one thousand grams — took over the grave's practical role as the standard used for trade and science.",
+      "Turning this water-based definition into a workable physical standard required exact experimental measurement. The chemist Louis Lefèvre-Gineau was tasked in 1795 with determining precisely how much a cubic decimetre of water weighed, using a hydrostatic method that compared an object's weight in air to its weight submerged in water. The former royal jeweller Marc-Étienne Janety, recalled from exile, then fabricated a platinum cylinder to embody that measured mass. In 1799, this platinum cylinder — approximately 39.4 mm in diameter and 39.7 mm tall — was deposited in the French National Archives and formally declared the standard kilogram; it became known as the Kilogramme des Archives.",
+      "The metric system spread unevenly at first — Napoleon briefly restricted its use — but France made it compulsory in 1840, and other nations adopted it through the 19th century. In 1875, seventeen nations, including the United States, signed the Metre Convention (Treaty of the Metre) in Paris, establishing the International Bureau of Weights and Measures (BIPM) and committing to shared, internationally held prototypes. The first General Conference on Weights and Measures (CGPM) formally adopted new platinum-iridium prototypes of the metre and kilogram in 1889; the kilogram prototype, called the International Prototype of the Kilogram (IPK) and nicknamed 'Le Grand K', was kept at the BIPM's headquarters outside Paris and served as the world's mass standard for over a century.",
+      "Relying on a single physical artifact created a scientific problem: the IPK could be damaged, contaminated, or could drift in mass relative to its official copies over time, and no one could be certain whether the IPK itself was changing or its copies were. Metrologists spent decades developing methods — chiefly the Kibble balance (which relates mechanical power to electrical power) and the X-ray crystal density method (which counts atoms in a nearly perfect silicon sphere) — capable of realizing the kilogram from a fixed constant of nature instead of an artifact.",
+      "On 20 May 2019, following a unanimous vote of the 26th CGPM in November 2018, the kilogram was redefined. It is now defined by fixing the numerical value of the Planck constant, h, at exactly 6.626 070 15 × 10⁻³⁴ joule-seconds, with the second and metre already fixed by their own defining constants. National metrology institutes can now realize a kilogram directly from this constant using a Kibble balance or the X-ray crystal density technique, without reference to any physical object."
+    ]
+  },
+  "uses": [
+    "In commerce and trade, the kilogram is the standard unit for pricing and labelling goods sold by weight in most of the world, from groceries to industrial commodities.",
+    "In food and agriculture, it is used to measure crop yields, livestock weight, and packaged food quantities on nutrition labels outside the United States.",
+    "In science, it underlies virtually all mass-dependent measurement, from pharmaceutical dosing research to particle physics, and its post-2019 definition gives laboratories a way to realize traceable mass standards without shipping artifacts to Paris.",
+    "In engineering and manufacturing, kilograms (and the derived newton, based on the kilogram) are used for structural loads, material specifications, and machine design throughout the metric world.",
+    "In medicine, body mass in kilograms is the standard basis for calculating drug dosages, especially for pediatric and weight-based prescriptions.",
+    "In shipping and logistics, cargo mass in kilograms determines freight pricing, load limits, and customs declarations for most international trade outside the United States."
+  ],
+  "sources": [
+    {"label": "BIPM — The kilogram (SI base unit)", "note": "Bureau International des Poids et Mesures, definition and dissemination of the kilogram since the 2019 redefinition"},
+    {"label": "NIST — \"Kilogram: The Past\"", "note": "National Institute of Standards and Technology, history of the kilogram from the grave to the International Prototype Kilogram"},
+    {"label": "SI Brochure, 9th edition (2019), Appendix 2 — BIPM", "note": "Official text of the Planck-constant-based definition of the kilogram"},
+    {"label": "US Metric Association — \"Origin of the Metric System\"", "note": "Summary of the French Revolutionary committees, Talleyrand's proposal, and the 1875 Metre Convention, sourced from NIST"}
+  ]
+}

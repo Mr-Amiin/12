@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sitemap | Universal Converter</title>
+  <meta name="description" content="Browse the public conversion routes and XML sitemap for Universal Converter.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://theuniversalconverter.com/sitemap.html">
+  <meta property="og:title" content="Sitemap | Universal Converter">
+  <meta property="og:description" content="Browse the public conversion routes and XML sitemap for Universal Converter.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://theuniversalconverter.com/sitemap.html">
+  <meta property="og:image" content="https://theuniversalconverter.com/logo.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sitemap | Universal Converter">
+  <meta name="twitter:description" content="Browse the public conversion routes and XML sitemap for Universal Converter.">
+  <meta name="twitter:image" content="https://theuniversalconverter.com/logo.svg">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#0f9f9a">
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+  <link rel="preconnect" href="https://fundingchoicesmessages.google.com" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+  <script src="adsense-config.js" defer></script>
+  <script src="adsense.js" defer></script>
+  <meta name="google-adsense-account" content="ca-pub-4632693492035799">
+  <script type="text/plain" data-cookie-category="advertising" data-src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4632693492035799" async crossorigin="anonymous"></script>
+
+  <style id="sitemap-fixed-height-cards">
+    /* ---------------------------------------------------------------
+       Sitemap usability upgrade: fixed-height, internally scrollable
+       category cards. Scoped to .sitemap-grid / .page-card so nothing
+       else on the site is affected. Uses the site's teal accent
+       (#0f9f9a) and respects the existing light/dark theme toggle.
+       ------------------------------------------------------------- */
+    .sitemap-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.25rem;
+      align-items: stretch;
+    }
+
+    .sitemap-grid .page-card {
+      display: flex;
+      flex-direction: column;
+      height: 420px;
+      min-height: 420px;
+      max-height: 420px;
+      padding: 0;
+      overflow: hidden;
+      border: 1px solid var(--border-color, #dbe3e6);
+      border-radius: var(--radius-lg, 12px);
+      background: var(--surface, #ffffff);
+      box-shadow: var(--shadow-sm, 0 1px 3px rgba(15, 23, 42, 0.08));
+    }
+
+    .sitemap-grid .sitemap-card-head {
+      flex: 0 0 auto;
+      padding: 0.85rem 1.1rem;
+      border-bottom: 1px solid var(--border-color, #dbe3e6);
+      background: var(--surface-muted, #f3f8f8);
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    .sitemap-grid .sitemap-card-head h2 {
+      margin: 0;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--color-primary, #0f9f9a);
+      text-transform: uppercase;
+    }
+
+    .sitemap-grid .sitemap-card-scroll {
+      flex: 1 1 auto;
+      overflow-y: auto;
+      padding: 0.5rem 1.1rem;
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-primary, #0f9f9a) transparent;
+    }
+
+    .sitemap-grid .sitemap-card-scroll::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .sitemap-grid .sitemap-card-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .sitemap-grid .sitemap-card-scroll::-webkit-scrollbar-thumb {
+      background-color: var(--color-primary, #0f9f9a);
+      border-radius: 8px;
+      opacity: 0.6;
+    }
+
+    .sitemap-grid .sitemap-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .sitemap-grid .sitemap-links li {
+      border-bottom: 1px dashed var(--border-color, #e5ecec);
+    }
+
+    .sitemap-grid .sitemap-links li:last-child {
+      border-bottom: none;
+    }
+
+    .sitemap-grid .sitemap-links a {
+      display: block;
+      padding: 0.4rem 0.15rem;
+      font-size: 0.88rem;
+      line-height: 1.35;
+      color: var(--text-color, #1f2937);
+      text-decoration: none;
+    }
+
+    .sitemap-grid .sitemap-links a:hover,
+    .sitemap-grid .sitemap-links a:focus-visible {
+      color: var(--color-primary, #0f9f9a);
+      text-decoration: underline;
+    }
+
+    .sitemap-grid .sitemap-card-count {
+      flex: 0 0 auto;
+      margin: 0;
+      padding: 0.55rem 1.1rem;
+      border-top: 1px solid var(--border-color, #dbe3e6);
+      background: var(--surface-muted, #f3f8f8);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-align: right;
+      color: var(--text-muted, #5b6b6a);
+    }
+
+    .in-content-ad.adsense-placeholder {
+      grid-column: 1 / -1;
+    }
+
+    /* Tablet */
+    @media (max-width: 1024px) {
+      .sitemap-grid {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+      .sitemap-grid .page-card {
+        height: 380px;
+        min-height: 380px;
+        max-height: 380px;
+      }
+    }
+
+    /* Mobile: one card per row, fixed height + internal scroll retained */
+    @media (max-width: 640px) {
+      .sitemap-grid {
+        grid-template-columns: 1fr;
+      }
+      .sitemap-grid .page-card {
+        height: 340px;
+        min-height: 340px;
+        max-height: 340px;
+      }
+    }
+
+    /* Dark theme support (site uses data-theme="dark" on <html>) */
+    html[data-theme="dark"] .sitemap-grid .page-card {
+      background: var(--surface, #111827);
+      border-color: var(--border-color, #263238);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    }
+
+    html[data-theme="dark"] .sitemap-grid .sitemap-card-head,
+    html[data-theme="dark"] .sitemap-grid .sitemap-card-count {
+      background: var(--surface-muted, #16212b);
+      border-color: var(--border-color, #263238);
+    }
+
+    html[data-theme="dark"] .sitemap-grid .sitemap-links a {
+      color: var(--text-color, #e5e7eb);
+    }
+
+    html[data-theme="dark"] .sitemap-grid .sitemap-links li {
+      border-color: var(--border-color, #24333a);
+    }
+
+    /* Sitemap search bar */
+    .sitemap-search-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin: 0 0 1.5rem;
+    }
+
+    .sitemap-search-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted, #5b6b6a);
+    }
+
+    .sitemap-search-input {
+      width: 100%;
+      max-width: 420px;
+      padding: 0.6rem 0.9rem;
+      font-size: 0.95rem;
+      border: 1px solid var(--border-color, #dbe3e6);
+      border-radius: var(--radius-md, 8px);
+      background: var(--surface, #ffffff);
+      color: var(--text-color, #1f2937);
+    }
+
+    .sitemap-search-input:focus-visible {
+      outline: 2px solid var(--color-primary, #0f9f9a);
+      outline-offset: 1px;
+    }
+
+    .sitemap-search-status {
+      margin: 0;
+      font-size: 0.82rem;
+      color: var(--text-muted, #5b6b6a);
+      min-height: 1.1em;
+    }
+
+    .sitemap-grid .page-card[hidden] {
+      display: none;
+    }
+
+    .sitemap-grid .sitemap-links li[hidden] {
+      display: none;
+    }
+
+    html[data-theme="dark"] .sitemap-search-input {
+      background: var(--surface, #111827);
+      border-color: var(--border-color, #263238);
+      color: var(--text-color, #e5e7eb);
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader"></header>
+<div class="mobile-drawer-overlay" id="mobileDrawerOverlay" hidden></div><nav class="mobile-drawer" id="mobileDrawer" aria-hidden="true" aria-label="Mobile navigation"></nav>
+
+
+  <main class="page-shell">
+    <section class="page-hero">
+      <p class="eyebrow">SEO navigation</p>
+      <h1>Sitemap</h1>
+      <p>Browse the public conversion routes published on Universal Converter. The XML sitemap is available for search engines, and the links below make the site easier to navigate.</p>
+      <div class="page-actions">
+        <a class="text-link" href="sitemap.xml">Open XML sitemap</a>
+        <a class="text-link" href="index.html">Back to home</a>
+      </div>
+    </section>
+
+    <section class="page-summary" aria-label="Sitemap overview">
+      <!--
+        This count is written once, at build/generation time, from the same
+        data source that produces sitemap.xml (161,173 unique <loc> entries
+        as of the last generation). It is plain static text: no script reads,
+        recalculates, or touches it after the page loads, so it cannot drift
+        between refreshes. Regenerate this page to update the number when
+        the sitemap changes.
+      -->
+      <p id="sitemapRouteCount">327,574 public routes are currently indexed for search and browsing.</p>
+    </section>
+
+    <section class="sitemap-search-bar" aria-label="Search sitemap links">
+      <label for="sitemapSearchInput" class="sitemap-search-label">Search all pages</label>
+      <input type="search" id="sitemapSearchInput" class="sitemap-search-input" placeholder="e.g. acres to hectares, density, flow rate" autocomplete="off">
+      <p class="sitemap-search-status" id="sitemapSearchStatus" aria-live="polite"></p>
+    </section>
+
+    <section class="page-grid sitemap-grid" aria-label="Sitemap categories">
+      <section class="page-card" data-sitemap-category="agriculture"><div class="sitemap-card-head"><h2>AGRICULTURE</h2></div><div class="sitemap-card-scroll" hidden></div><button type="button" class="sitemap-card-expand" data-category="agriculture" aria-expanded="false">Show 3,505 pages</button><p class="sitemap-card-count">3,505 pages</p></section>
+      <section class="page-card" data-sitemap-category="angle"><div class="sitemap-card-head"><h2>ANGLE</h2></div><div class="sitemap-card-scroll" hidden></div><button type="button" class="sitemap-card-expand" data-category="angle" aria-expanded="false">Show 57 pages</button><p class="sitemap-card-count">57 pages</p></section>
+      <section class="page-card" data-sitemap-category="area"><div class="sitemap-card-head"><h2>AREA</h2></div><div class="sitemap-card-scroll" hidden></div><button type="button" class="sitemap-card-expand" data-category="area" aria-expanded="false">Show 1,261 pages</button><p class="sitemap-card-count">1,261 pages</p></section>
+      <section class="in-content-ad adsense-placeholder" data-ad-placement="sitemap-after-area" aria-label="Advertisement" style="grid-column: 1 / -1;">
+      <span>Advertisement</span>
+      <strong>Ad slot: sitemap (728x90)</strong>
+      <p>Reserved after the Area category listing.</p>
+    </section>
+      <section class="page-card" data-sitemap-category="astronomy"><div class="sitemap-card-head"><h2>ASTRONOMY</h2></div><div class="sitemap-card-scroll" hidden></div><button type="button" class="sitemap-card-expand" data-category="astronomy" aria-expanded="false">Show 63 pages</button><p class="sitemap-card-count">63 pages</p></section>
+      <section class="page-card" data-sitemap-category="chemistry"><div class="sitemap-card-head"><h2>CHEMISTRY</h2></div><div class="sitemap-card-scroll" hidden></div><button type="button" class="sitemap-card-expand" data-category="chemistry" aria-expanded="false">Show 2,013 pages</button><p class="sitemap-card-count">2,013 pages</p></section>
+      <section class="page-card" data-sitemap-category="cooking"><div class="sitemap-card-head"><h2>COOKING</h2></div><div class="sitemap-card-scroll" hidden></div><button type="button" class="sitemap-card-expand" data-category="cooking" aria-expanded="false">Show 203 pages</button><p class="sitemap-card-count">203 pages</p></section>
+      <section class="in-content-ad adsense-placeholder" data-ad-placement="sitemap-after-cooking" aria-label="Advertisement" style="grid-column: 1 / -1;">
+      <span>Advertisement</span>
+      <strong>Ad slot: sitemap (728x90)</strong>
+      <p>Reserved after the Cooking category listing.</p>
+    </section>
+      <section class="page-card" data-sitemap-category="currency"><div class="sitemap-card-head"><h2>CURRENCY</h2></div><div class="sitemap-card-scroll" hidden></div><button type="button" class="sitemap-card-expand" data-category="currency" aria-expanded="false">Show 23,871 pages</button><p class="sitemap-card-count">23,871 pages</p></section>
+      <section class="page-card" data-sitemap-category="density"><div class="sitemap-card-head"><h2>DENSITY</h2></div><div class="sitemap-card-scroll" hidden></div><button type="button" class="sitemap-card-expand" data-category="density" aria-expanded="false">Show 166,057 pages</button><p class="sitemap-card-count">166,057 pages</p></section>
+      <section class="page-card" data-sitemap-category="digital"><div class="sitemap-card-head"><h2>DIGITAL STORAGE</h2></div><div class="sitemap-card-scroll" hidden></div><button type="button" class="sitemap-card-expand" data-category="digital" aria-expanded="false">Show 254 pages</button><p class="sitemap-card-count">254 pages</p></section>
+      <section class="in-content-ad adsense-placeholder" data-ad-placement="sitemap-after-digital-storage" aria-label="Advertisement" style="grid-column: 1 / -1;">
+      <span>Advertisement</span>
+      <strong>Ad slot: sitemap (728x90)</strong>
+      <p>Reserved after the Digital Storage category listing.</p>
+    </section>
+      <section class="page-card" data-sitemap-category="electricity"><div class="sitemap-card-head"><h2>ELECTRICITY</h2></div><div class="sitemap-card-scroll" hidden></div><button type="button" class="sitemap-card-expand" data-category="electricity" aria-expanded="false">Show 4,803 pages</button><p class="sitemap-card-count">4,803 pages</p></section>
+      <section class="page-card" data-sitemap-category="energy"><div class="sitemap-card-head"><h2>ENERGY</h2></div><div class="sitemap-card-scroll" hidden></div><button type="button" class="sitemap-card-expand" data-category="energy" aria-expanded="false">Show 1,123 pages</button><p class="sitemap-card-count">1,123 pages</p></section>
+      <section class="page-card" data-sitemap-category="engineering"><div class="sitemap-card-head"><h2>ENGINEERING</h2></div><div class="sitemap-card-scroll" hidden></div><button type="button" class="sitemap-card-expand" data-category="engineering" aria-expanded="false">Show 4,865 pages</button><p class="sitemap-card-count">4,865 pages</p></section>
+      <section class="in-content-ad adsense-placeholder" data-ad-placement="sitemap-after-engineering" aria-label="Advertisement" style="grid-column: 1 / -1;">
+      <span>Advertisement</span>
+      <strong>Ad slot: sitemap (728x90)</strong>
+      <p>Reserved after the Engineering category listing.</p>
+    </section>
+      <section class="page-card" data-sitemap-category="flow-rate"><div class="sitemap-card-head"><h2>FLOW RATE</h2></div><div class="sitemap-card-scroll" hidden></div><button type="button" class="sitemap-card-expand" data-category="flow-rate" aria-expanded="false">Show 102,081 pages</button><p class="sitemap-card-count">102,081 pages</p></section>
+      <section class="page-card" data-sitemap-category="force"><div class="sitemap-card-head"><h2>FORCE</h2></div><div class="sitemap-card-scroll" hidden></div><button type="button" class="sitemap-card-expand" data-category="force" aria-expanded="false">Show 871 pages</button><p class="sitemap-card-count">871 pages</p></section>
+      <section class="page-card" data-sitemap-category="frequency"><div class="sitemap-card-head"><h2>FREQUENCY</h2></div><div class="sitemap-card-scroll" hidden></div><button type="button" class="sitemap-card-expand" data-category="frequency" aria-expanded="false">Show 813 pages</button><p class="sitemap-card-count">813 pages</p></section>
+      <section class="in-content-ad adsense-placeholder" data-ad-placement="sitemap-after-frequency" aria-label="Advertisement" style="grid-column: 1 / -1;">
+      <span>Advertisement</span>
+      <strong>Ad slot: sitemap (728x90)</strong>
+      <p>Reserved after the Frequency category listing.</p>
+    </section>
+      <section class="page-card" data-sitemap-category="fuel-economy"><div class="sitemap-card-head"><h2>FUEL ECONOMY</h2></div><div class="sitemap-card-scroll" hidden></div><button type="button" class="sitemap-card-expand" data-category="fuel-economy" aria-expanded="false">Show 43 pages</button><p class="sitemap-card-count">43 pages</p></section>
+      <section class="page-card" data-sitemap-category="length"><div class="sitemap-card-head"><h2>LENGTH</h2></div><div class="sitemap-card-scroll" hidden></div><button type="button" class="sitemap-card-expand" data-category="length" aria-expanded="false">Show 1,981 pages</button><p class="sitemap-card-count">1,981 pages</p></section>
+      <section class="page-card" data-sitemap-category="power"><div class="sitemap-card-head"><h2>POWER</h2></div><div class="sitemap-card-scroll" hidden></div><button type="button" class="sitemap-card-expand" data-category="power" aria-expanded="false">Show 871 pages</button><p class="sitemap-card-count">871 pages</p></section>
+      <section class="in-content-ad adsense-placeholder" data-ad-placement="sitemap-after-power" aria-label="Advertisement" style="grid-column: 1 / -1;">
+      <span>Advertisement</span>
+      <strong>Ad slot: sitemap (728x90)</strong>
+      <p>Reserved after the Power category listing.</p>
+    </section>
+      <section class="page-card" data-sitemap-category="pressure"><div class="sitemap-card-head"><h2>PRESSURE</h2></div><div class="sitemap-card-scroll" hidden></div><button type="button" class="sitemap-card-expand" data-category="pressure" aria-expanded="false">Show 1,191 pages</button><p class="sitemap-card-count">1,191 pages</p></section>
+      <section class="page-card" data-sitemap-category="radiation"><div class="sitemap-card-head"><h2>RADIATION</h2></div><div class="sitemap-card-scroll" hidden></div><button type="button" class="sitemap-card-expand" data-category="radiation" aria-expanded="false">Show 1,303 pages</button><p class="sitemap-card-count">1,303 pages</p></section>
+      <section class="page-card" data-sitemap-category="scientific"><div class="sitemap-card-head"><h2>SCIENTIFIC</h2></div><div class="sitemap-card-scroll" hidden></div><button type="button" class="sitemap-card-expand" data-category="scientific" aria-expanded="false">Show 887 pages</button><p class="sitemap-card-count">887 pages</p></section>
+      <section class="in-content-ad adsense-placeholder" data-ad-placement="sitemap-after-scientific" aria-label="Advertisement" style="grid-column: 1 / -1;">
+      <span>Advertisement</span>
+      <strong>Ad slot: sitemap (728x90)</strong>
+      <p>Reserved after the Scientific category listing.</p>
+    </section>
+      <section class="page-card" data-sitemap-category="speed"><div class="sitemap-card-head"><h2>SPEED</h2></div><div class="sitemap-card-scroll" hidden></div><button type="button" class="sitemap-card-expand" data-category="speed" aria-expanded="false">Show 1,191 pages</button><p class="sitemap-card-count">1,191 pages</p></section>
+      <section class="page-card" data-sitemap-category="temperature"><div class="sitemap-card-head"><h2>TEMPERATURE</h2></div><div class="sitemap-card-scroll" hidden></div><button type="button" class="sitemap-card-expand" data-category="temperature" aria-expanded="false">Show 57 pages</button><p class="sitemap-card-count">57 pages</p></section>
+      <section class="page-card" data-sitemap-category="time"><div class="sitemap-card-head"><h2>TIME</h2></div><div class="sitemap-card-scroll" hidden></div><button type="button" class="sitemap-card-expand" data-category="time" aria-expanded="false">Show 1,123 pages</button><p class="sitemap-card-count">1,123 pages</p></section>
+      <section class="in-content-ad adsense-placeholder" data-ad-placement="sitemap-after-time" aria-label="Advertisement" style="grid-column: 1 / -1;">
+      <span>Advertisement</span>
+      <strong>Ad slot: sitemap (728x90)</strong>
+      <p>Reserved after the Time category listing.</p>
+    </section>
+      <section class="page-card" data-sitemap-category="torque"><div class="sitemap-card-head"><h2>TORQUE</h2></div><div class="sitemap-card-scroll" hidden></div><button type="button" class="sitemap-card-expand" data-category="torque" aria-expanded="false">Show 813 pages</button><p class="sitemap-card-count">813 pages</p></section>
+      <section class="page-card" data-sitemap-category="volume"><div class="sitemap-card-head"><h2>VOLUME</h2></div><div class="sitemap-card-scroll" hidden></div><button type="button" class="sitemap-card-expand" data-category="volume" aria-expanded="false">Show 4,693 pages</button><p class="sitemap-card-count">4,693 pages</p></section>
+      <section class="page-card" data-sitemap-category="weight"><div class="sitemap-card-head"><h2>WEIGHT</h2></div><div class="sitemap-card-scroll" hidden></div><button type="button" class="sitemap-card-expand" data-category="weight" aria-expanded="false">Show 1,561 pages</button><p class="sitemap-card-count">1,561 pages</p></section>
+      <section class="in-content-ad adsense-placeholder" data-ad-placement="sitemap-after-weight" aria-label="Advertisement" style="grid-column: 1 / -1;">
+      <span>Advertisement</span>
+      <strong>Ad slot: sitemap (728x90)</strong>
+      <p>Reserved after the Weight category listing.</p>
+    </section>
+      <section class="page-card" data-sitemap-category="main-pages"><div class="sitemap-card-head"><h2>Main pages</h2></div><div class="sitemap-card-scroll" hidden></div><button type="button" class="sitemap-card-expand" data-category="main-pages" aria-expanded="false">Show 27 pages</button><p class="sitemap-card-count">27 pages</p></section>
+      <section class="page-card" data-sitemap-category="guides"><div class="sitemap-card-head"><h2>Guides</h2></div><div class="sitemap-card-scroll" hidden></div><button type="button" class="sitemap-card-expand" data-category="guides" aria-expanded="false">Show 12 pages</button><p class="sitemap-card-count">12 pages</p></section>
+      <section class="page-card" data-sitemap-category="trust-and-legal"><div class="sitemap-card-head"><h2>Trust and legal</h2></div><div class="sitemap-card-scroll" hidden></div><button type="button" class="sitemap-card-expand" data-category="trust-and-legal" aria-expanded="false">Show 6 pages</button><p class="sitemap-card-count">6 pages</p></section>
+    </section></main>
+
+  
+  
+  <footer class="site-footer">
+    <nav aria-label="Footer navigation"><a href="https://theuniversalconverter.com/about.html">About</a>
+      <a href="https://theuniversalconverter.com/privacy.html">Privacy</a>
+      <a href="https://theuniversalconverter.com/terms.html">Terms</a>
+      <a href="https://theuniversalconverter.com/contact.html">Contact</a>
+    </nav>
+  </footer>
+
+  <script>
+  (function () {
+    // Loads a category's links only when the user expands that category
+    // (fetches sitemap-data/<slug>.json), instead of every one of the
+    // site's routes being present in the DOM on page load. Large
+    // categories (PAGE_SIZE+ links) render in pages with a "Show more"
+    // control so even opening the very largest category doesn't block
+    // the main thread in one go.
+    var PAGE_SIZE = 1000;
+    var cache = {};   // slug -> array of [href, label]
+    var shown = {};   // slug -> number of rows currently rendered
+
+    var grid = document.querySelector('.sitemap-grid');
+    if (!grid) return;
+
+    function renderPage(slug, container, list, upTo) {
+      var start = shown[slug] || 0;
+      if (start >= upTo) return;
+      var frag = document.createDocumentFragment();
+      var ul = container.querySelector('ul.sitemap-links');
+      if (!ul) {
+        ul = document.createElement('ul');
+        ul.className = 'sitemap-links';
+        container.appendChild(ul);
+      }
+      for (var i = start; i < upTo; i++) {
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = list[i][0];
+        a.textContent = list[i][1];
+        li.appendChild(a);
+        frag.appendChild(li);
+      }
+      ul.appendChild(frag);
+      shown[slug] = upTo;
+
+      var existingMore = container.querySelector('.sitemap-card-more');
+      if (existingMore) existingMore.remove();
+      if (upTo < list.length) {
+        var more = document.createElement('button');
+        more.type = 'button';
+        more.className = 'sitemap-card-more';
+        more.textContent = 'Show more (' + upTo + ' of ' + list.length + ')';
+        more.addEventListener('click', function () {
+          renderPage(slug, container, list, Math.min(list.length, upTo + PAGE_SIZE));
+        });
+        container.appendChild(more);
+      }
+    }
+
+    function loadCategory(card, slug) {
+      var container = card.querySelector('.sitemap-card-scroll');
+      var expandBtn = card.querySelector('.sitemap-card-expand');
+      if (cache[slug]) {
+        container.hidden = false;
+        if (expandBtn) expandBtn.hidden = true;
+        return;
+      }
+      if (expandBtn) { expandBtn.disabled = true; expandBtn.textContent = 'Loading…'; }
+      fetch('sitemap-data/' + slug + '.json')
+        .then(function (res) {
+          if (!res.ok) throw new Error('failed to load ' + slug);
+          return res.json();
+        })
+        .then(function (list) {
+          cache[slug] = list;
+          container.hidden = false;
+          if (expandBtn) expandBtn.hidden = true;
+          renderPage(slug, container, list, Math.min(list.length, PAGE_SIZE));
+        })
+        .catch(function () {
+          if (expandBtn) { expandBtn.disabled = false; expandBtn.textContent = 'Could not load — try again'; }
+        });
+    }
+
+    grid.addEventListener('click', function (event) {
+      var btn = event.target.closest('.sitemap-card-expand');
+      if (!btn) return;
+      var card = btn.closest('.page-card');
+      var slug = btn.getAttribute('data-category');
+      if (card && slug) loadCategory(card, slug);
+    });
+
+    // ---- Search ----
+    // Instant filter over the 27 category names (cheap, always available).
+    // Typing also expands+loads any category whose name OR already-cached
+    // link list matches, without ever pulling every category's data into
+    // memory at once just to power a search box.
+    var input = document.getElementById('sitemapSearchInput');
+    var status = document.getElementById('sitemapSearchStatus');
+    if (!input || !status) return;
+
+    var cards = Array.prototype.slice.call(grid.querySelectorAll('.page-card'));
+    var timer = null;
+
+    function runFilter() {
+      var query = input.value.trim().toLowerCase();
+      if (!query) {
+        cards.forEach(function (card) { card.hidden = false; });
+        status.textContent = '';
+        return;
+      }
+      var matchingCategories = 0;
+      cards.forEach(function (card) {
+        var slug = card.getAttribute('data-sitemap-category');
+        var name = (card.querySelector('h2') || {}).textContent || '';
+        var nameMatch = name.toLowerCase().indexOf(query) !== -1;
+        var cachedMatch = cache[slug] && cache[slug].some(function (pair) {
+          return pair[1].toLowerCase().indexOf(query) !== -1;
+        });
+        var visible = nameMatch || cachedMatch;
+        card.hidden = !visible;
+        if (visible) matchingCategories++;
+      });
+      status.textContent = matchingCategories === 0
+        ? 'No matching categories. Try a shorter term, or open a category below to search its pages directly.'
+        : 'Showing ' + matchingCategories + ' matching categor' + (matchingCategories === 1 ? 'y' : 'ies') +
+          '. Open a category to search its individual pages.';
+    }
+
+    input.addEventListener('input', function () {
+      clearTimeout(timer);
+      timer = setTimeout(runFilter, 200);
+    });
+  })();
+</script>
+</body>
+</html>

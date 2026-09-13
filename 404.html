@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Conversion Not Found - Universal Converter</title>
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://theuniversalconverter.com/">
+  <meta property="og:title" content="Conversion Not Found - Universal Converter">
+  <meta property="og:description" content="Free online unit converter.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://theuniversalconverter.com/">
+  <meta property="og:image" content="https://theuniversalconverter.com/logo.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Conversion Not Found - Universal Converter">
+  <meta name="twitter:description" content="Free online unit converter.">
+  <meta name="twitter:image" content="https://theuniversalconverter.com/logo.svg">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0f9f9a">
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+  <link rel="preconnect" href="https://fundingchoicesmessages.google.com" crossorigin>
+  <link rel="stylesheet" href="/styles.css">  <script src="/adsense-config.js" defer></script>
+  <script src="/adsense.js" defer></script>
+  <meta name="google-adsense-account" content="ca-pub-4632693492035799">
+  <script type="text/plain" data-cookie-category="advertising" data-src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4632693492035799" async crossorigin="anonymous"></script>
+</head>
+<body>
+  <main class="page-shell">
+    <section class="page-hero">
+      <p class="eyebrow">Conversion route fallback</p>
+      <h1>Opening the converter</h1>
+      <p>The requested conversion page was not found. Universal Converter will open the closest matching converter.</p>
+      <a class="page-cta" id="fallbackLink" href="/#converter">Open converter</a>
+    </section>
+  </main>
+  <script>
+    (function () {
+      var fallbacks = {
+        "kg-to-lbs": ["weight", "kilogram", "pound"],
+        "celsius-to-fahrenheit": ["temperature", "celsius", "fahrenheit"],
+        "miles-to-km": ["length", "mile", "kilometer"],
+        "acres-to-hectares": ["area", "acre", "hectare"],
+        "gb-to-mb": ["digital", "gigabyte", "megabyte"],
+        "meter-to-feet": ["length", "meter", "foot"],
+        "meters-to-feet": ["length", "meter", "foot"],
+        "feet-to-meters": ["length", "foot", "meter"],
+        "km-to-miles": ["length", "kilometer", "mile"],
+        "inches-to-cm": ["length", "inch", "centimeter"],
+        "lbs-to-kg": ["weight", "pound", "kilogram"],
+        "grams-to-ounces": ["weight", "gram", "ounce"],
+        "fahrenheit-to-celsius": ["temperature", "fahrenheit", "celsius"],
+        "liter-to-gallon": ["volume", "liter", "gallon_us"],
+        "liters-to-gallons": ["volume", "liter", "gallon_us"],
+        "gallons-to-liters": ["volume", "gallon_us", "liter"],
+        "acre-to-hectare": ["area", "acre", "hectare"],
+        "hectares-to-acres": ["area", "hectare", "acre"],
+        "square-feet-to-square-meters": ["area", "square_foot", "square_meter"],
+        "mph-to-kmh": ["speed", "mile_per_hour", "kilometer_per_hour"],
+        "psi-to-bar": ["pressure", "psi", "bar"],
+        "watts-to-horsepower": ["power", "watt", "horsepower_mechanical"]
+      };
+      var slug = location.pathname.split("/").filter(Boolean).pop();
+      var target = "/#converter";
+      if (fallbacks[slug]) {
+        target = "/converter?slug=" + encodeURIComponent(slug) + "&value=1#converter";
+      }
+      document.getElementById("fallbackLink").href = target;
+      setTimeout(function () {
+        location.replace(target);
+      }, 800);
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+218c218
+<         <p class="hero-subtitle">The ultimate free online converter for everyday, scientific, engineering, agriculture, business, astronomy, cooking, and scientific calculations</p>
+---
+>         <p class="hero-subtitle">Universal Converter is a free, all-in-one conversion platform covering 27 measurement categories and over 6,400 units, including length, weight, temperature, volume, currency, digital storage, pressure, agriculture, astronomy, cooking, and engineering. Search or browse by category, get instant accurate results with source definitions and formulas, and use the same converter for everyday tasks, scientific work, and business calculations, online or offline.</p>
+392a393,414
+>     <section class="trust-section stats-section" aria-labelledby="statsTitle">
+>       <div>
+>         <p class="eyebrow">Universal Converter by the numbers</p>
+>         <h2 id="statsTitle">A converter built at real scale</h2>
+>         <p>Every figure below reflects what is actually running behind the calculator: real unit definitions and real generated conversion pages, not placeholder content.</p>
+>       </div>
+>       <div class="trust-grid">
+>         <article>
+>           <h3>27</h3>
+>           <p>Measurement categories, spanning everyday length and weight through agriculture, astronomy, and engineering.</p>
+>         </article>
+>         <article>
+>           <h3>6,413</h3>
+>           <p>Individual unit definitions supported across every category, including metric prefixes and regional variants.</p>
+>         </article>
+>         <article>
+>           <h3>394,700+</h3>
+>           <p>SEO conversion pages generated site-wide, each with a formula, FAQ, and related conversions.</p>
+>         </article>
+>       </div>
+>     </section>
+> 
+713a736,741
+>     </section>
+> 
+>     <section class="mission-section" aria-labelledby="missionTitle">
+>       <p class="eyebrow">Our mission</p>
+>       <h2 id="missionTitle">Making every measurement easy to trust</h2>
+>       <p>Universal Converter exists to make unit conversion fast, accurate, and free for everyone, from students and cooks to engineers and business teams. We publish exact definitions and formulas alongside every result, keep the core tool free with no account required, and build for offline use so a converter is available wherever you're working.</p>

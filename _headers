@@ -1,0 +1,91 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# --- Core first-party JS/CSS: long-lived, immutable (filenames are
+#     content-versioned at deploy time, so a hard cache is safe) ---
+/styles.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/app.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/adsense.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/adsense-config.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/analytics-config.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/google-analytics.js
+  Cache-Control: public, max-age=31536000, immutable
+
+# --- Images, icons, fonts, SVGs, manifests: one-year immutable cache ---
+/*.svg
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.jpg
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.jpeg
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.webp
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.ico
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.woff
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.ttf
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.otf
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.eot
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.webmanifest
+  Cache-Control: public, max-age=31536000, immutable
+
+/favicon.ico
+  Cache-Control: public, max-age=31536000, immutable
+
+/apple-touch-icon.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/site.webmanifest
+  Cache-Control: public, max-age=31536000, immutable
+
+# --- HTML pages: always revalidate so users get the latest markup/links
+#     to the (immutable, hashed-by-deploy) assets above ---
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+# --- Left as-is: not covered by the current caching requirements ---
+/service-worker.js
+  Cache-Control: no-cache
+
+/sitemap.xml
+  Cache-Control: public, max-age=3600
+
+/ads.txt
+  Cache-Control: public, max-age=3600
+
+/_redirects
+  Cache-Control: no-cache

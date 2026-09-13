@@ -1,0 +1,8 @@
+{
+  "provider": "frankfurter",
+  "update_frequency": "hourly",
+  "base": "USD",
+  "api_key_env": "EXCHANGE_RATE_API_KEY",
+  "timeout_seconds": 10,
+  "_comment": "Change 'provider' to one of: frankfurter, exchangerate_host, currencyapi, open_exchange_rates, fixer. Key-based providers read their key from the environment variable named in 'api_key_env'. 'update_frequency' is documentation for your scheduler (cron/CI) -- see the crontab examples in fetch_rates.py's docstring."
+}

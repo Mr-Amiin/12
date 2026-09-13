@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Dashboard - Universal Converter</title>
+  <meta name="description" content="Manage custom units for Universal Converter: add, edit, delete, search, export, and import unit definitions stored on this device.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://theuniversalconverter.com/admin/">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <meta name="theme-color" content="#0f9f9a">
+  <link rel="manifest" href="../site.webmanifest">
+  <link rel="stylesheet" href="../styles.css">
+  <script src="../app.js" defer></script>
+</head>
+<body>
+  <header class="site-header" id="siteHeader"></header>
+<div class="mobile-drawer-overlay" id="mobileDrawerOverlay" hidden></div><nav class="mobile-drawer" id="mobileDrawer" aria-hidden="true" aria-label="Mobile navigation"></nav>
+
+  <main class="page-shell shared-page-container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a><span>/</span><span>Admin Dashboard</span>
+    </nav>
+
+    <section class="page-hero">
+      <p class="eyebrow">Custom units dashboard</p>
+      <h1>Admin Dashboard</h1>
+      <p>Add, edit, search, export, import, and remove custom units. Everything here is stored locally on this device using the same custom-unit format the converter already reads, so nothing about the conversion engine changes.</p>
+    </section>
+    <section class="ad-band header-ad" data-ad-placement="header" aria-label="Header advertisement placeholder"><span>Advertisement</span><strong>Header ad slot</strong><p>Reserved responsive banner space.</p></section>
+
+    <div class="admin-dashboard">
+      <section class="admin-card" aria-labelledby="adminAddTitle">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Step 1</p>
+            <h2 id="adminAddTitle">Add custom unit</h2>
+          </div>
+        </div>
+        <form class="admin-unit-form" id="adminUnitForm">
+          <label>Category
+            <select id="adminCategory"></select>
+          </label>
+          <label>Unit name
+            <input id="adminUnitName" type="text" placeholder="Regional unit name" required>
+          </label>
+          <label>Symbol
+            <input id="adminUnitSymbol" type="text" placeholder="sym" required>
+          </label>
+          <label>Conversion factor
+            <input id="adminUnitFactor" type="number" step="any" min="0" placeholder="1.0" required>
+          </label>
+          <label class="admin-field-wide">Definition
+            <input id="adminUnitDefinition" type="text" placeholder="Short unit definition">
+          </label>
+          <div class="admin-form-actions">
+            <button type="submit" class="admin-btn-primary" id="adminSubmitBtn">Add unit</button>
+            <button type="button" class="admin-btn-secondary" id="adminCancelEdit" hidden>Cancel edit</button>
+          </div>
+          <p class="admin-form-status" id="adminFormStatus" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="in-content-ad" data-ad-placement="content" aria-label="In-content advertisement placeholder"><span>Advertisement</span><strong>In-content ad slot</strong><p>Reserved placement between helpful content sections.</p></section>
+
+      <section class="admin-card" aria-labelledby="adminListTitle">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Step 2</p>
+            <h2 id="adminListTitle">Custom units</h2>
+          </div>
+        </div>
+
+        <div class="admin-toolbar">
+          <label class="visually-hidden" for="adminSearch">Search custom units</label>
+          <input class="admin-search" id="adminSearch" type="search" placeholder="Search by name, symbol, or category" autocomplete="off">
+          <div class="admin-tools">
+            <button type="button" id="adminExportBtn">Export</button>
+            <button type="button" id="adminImportBtn">Import</button>
+            <input type="file" id="adminImportInput" accept="application/json" hidden>
+            <button type="button" class="admin-btn-danger" id="adminClearBtn">Clear all</button>
+          </div>
+        </div>
+
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Category</th>
+                <th scope="col">Symbol</th>
+                <th scope="col">Factor</th>
+                <th scope="col">Definition</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="adminUnitTableBody"></tbody>
+          </table>
+          <p class="admin-empty-state" id="adminEmptyState" hidden></p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <a class="brand footer-brand" href="../index.html">
+        <img src="../logo.svg" alt="" width="32" height="32">
+        <span>Universal Converter</span>
+      </a>
+      <p>Fast conversions for everyday, scientific, engineering, and business units.</p>
+    </div>
+    <nav aria-label="Footer navigation">
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../privacy.html">Privacy Policy</a>
+      <a href="../terms.html">Terms</a>
+      <a href="../references.html">References</a>
+      <a href="../guides.html">Guides</a><a href="../sitemap.html">Sitemap</a>
+      <a href="../index.html#calculators">Calculators</a>
+      <a href="../admin/">Custom Units</a>
+    </nav>
+  </footer>
+
+  <script>
+    window.UC_ANALYTICS = window.UC_ANALYTICS || { enabled: false, provider: "custom", endpoint: "" };
+    window.dataLayer = window.dataLayer || [];
+  </script>
+  <script src="../analytics-config.js" defer></script>
+  <script src="../google-analytics.js" defer></script>
+</body>
+</html>

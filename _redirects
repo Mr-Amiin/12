@@ -1,0 +1,32 @@
+/converter /index.html 200
+/kg-to-lbs /kg-to-lbs/ 301
+/celsius-to-fahrenheit /celsius-to-fahrenheit/ 301
+/miles-to-km /miles-to-km/ 301
+/acres-to-hectares /acres-to-hectares/ 301
+/gb-to-mb /gb-to-mb/ 301
+/meter-to-feet /meter-to-feet/ 301
+/meters-to-feet /meters-to-feet/ 301
+/feet-to-meters /feet-to-meters/ 301
+/km-to-miles /km-to-miles/ 301
+/inches-to-cm /inches-to-cm/ 301
+/lbs-to-kg /lbs-to-kg/ 301
+/grams-to-ounces /grams-to-ounces/ 301
+/fahrenheit-to-celsius /fahrenheit-to-celsius/ 301
+/liter-to-gallon /liter-to-gallon/ 301
+/liters-to-gallons /liters-to-gallons/ 301
+/gallons-to-liters /gallons-to-liters/ 301
+/acre-to-hectare /acre-to-hectare/ 301
+/hectares-to-acres /hectares-to-acres/ 301
+/square-feet-to-square-meters /square-feet-to-square-meters/ 301
+/mph-to-kmh /mph-to-kmh/ 301
+/psi-to-bar /psi-to-bar/ 301
+/watts-to-horsepower /watts-to-horsepower/ 301
+
+# Legacy "flagship" volume pages live at site root (not under /volume/) but
+# share the volume category, so they don't match the /volume/{slug}/ pattern
+# used by every other volume conversion page. Redirect that expected pattern
+# to the real canonical page instead of falling through to the 404 fallback,
+# which has no SEO content (including no Related Conversions section).
+/volume/liter-to-gallon/* /liter-to-gallon/ 301
+/volume/liters-to-gallons/* /liters-to-gallons/ 301
+/volume/gallons-to-liters/* /gallons-to-liters/ 301

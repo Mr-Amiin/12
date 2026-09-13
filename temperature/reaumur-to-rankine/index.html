@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reaumurs to Rankines Converter — Re to R</title>
+  <meta name="description" content="Convert Reaumur (Re) to Rankine (R) using the exact temperature formula. See the formula, worked examples, and conversion table.">
+  <meta name="keywords" content="reaumur to rankine, reaumurs to rankines, temperature converter">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://theuniversalconverter.com/reaumur-to-rankine/">
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+  <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+  <link rel="stylesheet" href="../../styles.css">
+  <script src="../../app.js" defer></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Reaumurs to Rankines Converter — Re to R","description":"Convert Reaumur (Re) to Rankine (R) using the exact temperature formula. See the formula, worked examples, and conversion table.","url":"https://theuniversalconverter.com/reaumur-to-rankine/","breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://theuniversalconverter.com/index.html"},{"@type":"ListItem","position":2,"name":"Temperature","item":"https://theuniversalconverter.com/temperature/"},{"@type":"ListItem","position":3,"name":"Reaumurs to Rankines","item":"https://theuniversalconverter.com/reaumur-to-rankine/"}]}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How many rankines are in 1 reaumur?","acceptedAnswer":{"@type":"Answer","text":"1 reaumur equals 493.92 rankines, using the offset temperature formula rather than an estimate."}},{"@type":"Question","name":"How do I convert reaumur to rankine?","acceptedAnswer":{"@type":"Answer","text":"Use the formula shown above: it involves both a multiplication and an addition/subtraction because the two scales don't share a common zero point."}},{"@type":"Question","name":"How do I convert rankine back to reaumur?","acceptedAnswer":{"@type":"Answer","text":"Use the reverse factor: 1 rankine equals -218.0755556 reaumurs. You can also use the swap control in the converter above to flip the direction instantly."}},{"@type":"Question","name":"What is a reaumur?","acceptedAnswer":{"@type":"Answer","text":"Reaumur (Re) is a unit of temperature."}},{"@type":"Question","name":"What is a rankine?","acceptedAnswer":{"@type":"Answer","text":"Rankine (R) is a unit of temperature."}},{"@type":"Question","name":"Is the Reaumur to Rankine conversion exact?","acceptedAnswer":{"@type":"Answer","text":"Yes. Both scales are formally defined relative to the Kelvin scale, so the conversion formula is exact — the only rounding involved is in how many decimal places you choose to display."}}]}</script>
+  <script src="../../adsense-config.js"></script>
+  <script src="../../adsense.js" defer></script>  <meta name="google-adsense-account" content="ca-pub-4632693492035799">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4632693492035799"
+     crossorigin="anonymous"></script>
+</head>
+<body class="seo-page">
+  <header class="site-header" id="siteHeader"></header>
+<div class="mobile-drawer-overlay" id="mobileDrawerOverlay" hidden></div><nav class="mobile-drawer" id="mobileDrawer" aria-hidden="true" aria-label="Mobile navigation"></nav>
+
+  <main class="page-shell shared-page-container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../../index.html">Home</a>
+        <span>/</span>
+        <a href="/temperature/">Temperature</a>
+        <span>/</span>
+        <span>Reaumurs to Rankines</span>
+      </nav>
+
+      <section class="hero seo-top" style="order: 0;">
+        <div class="hero-content">
+          <h1>Reaumurs to Rankines Converter — Re to R</h1>
+          <p>Convert Reaumur (Re) to Rankine (R) using the exact temperature formula. See the formula, worked examples, and conversion table.</p>
+        </div>
+      </section>
+
+      <section class="converter-section">
+        <section class="tool-section" id="converter" aria-labelledby="converterTitle">
+          <h2 id="converterTitle" class="visually-hidden">Reaumurs to Rankines converter</h2>
+
+          <div class="tool-layout">
+            <aside class="category-panel" aria-label="Converter categories">
+              <label class="field-label" for="unitSearch">Search all units</label>
+              <input class="compact-search" id="unitSearch" type="search" placeholder="Search all units">
+              <div class="category-list" id="categoryList"></div>
+            </aside>
+
+            <section class="converter-panel" aria-label="Active converter">
+              <div class="converter-header">
+                <div>
+                  <p class="panel-kicker" id="activeCategoryKind">Converter</p>
+                  <h2 id="activeCategoryName">Temperature Converter</h2>
+                  <p id="activeCategoryDescription">Convert Celsius, Fahrenheit, Kelvin, Rankine, Delisle, Newton, Reaumur, and Romer.</p>
+                </div>
+                <button class="favorite-button" id="favoriteButton" type="button" aria-pressed="false">
+                  <span aria-hidden="true">+</span>
+                  Favorite
+                </button>
+              </div>
+
+              <div class="converter-grid">
+                <label class="unit-box" for="fromValue">
+                  <span>From Unit</span>
+                  <input id="fromValue" type="text" inputmode="decimal" value="1" autocomplete="off">
+                  <select id="fromUnit" aria-label="From unit"></select>
+                </label>
+
+                <button class="swap-button" id="swapButton" type="button" aria-label="Swap units">&#8644;</button>
+
+                <label class="unit-box" for="toValue">
+                  <span>To Unit</span>
+                  <input id="toValue" type="text" readonly>
+                  <select id="toUnit" aria-label="To unit"></select>
+                </label>
+              </div>
+
+              <div class="converter-controls" aria-label="Result formatting controls">
+                <label>Decimal control
+                  <input id="precisionControl" type="number" min="2" max="15" value="12">
+                </label>
+                <label>Notation
+                  <select id="notationMode">
+                    <option value="auto">Auto</option>
+                    <option value="decimal">Decimal</option>
+                    <option value="scientific">Scientific</option>
+                    <option value="engineering">Engineering</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="context-panel" id="contextPanel" hidden>
+                <div class="context-copy">
+                  <strong>Context values</strong>
+                  <span id="contextHelp">Some unit families need one extra value for a physically accurate result.</span>
+                </div>
+                <div class="context-grid electricity-context">
+                  <label>Voltage
+                    <input id="contextVoltage" type="number" min="0" step="any" value="120">
+                  </label>
+                  <label>Current
+                    <input id="contextCurrent" type="number" min="0" step="any" value="10">
+                  </label>
+                  <label>Resistance
+                    <input id="contextResistance" type="number" min="0" step="any" value="12">
+                  </label>
+                  <label>Hours
+                    <input id="contextHours" type="number" min="0" step="any" value="1">
+                  </label>
+                </div>
+                <div class="context-grid agriculture-context">
+                  <label>Liquid density, kg/L
+                    <input id="contextDensity" type="number" min="0" step="any" value="1">
+                  </label>
+                </div>
+              </div>
+
+              <div class="result-bar">
+                <div>
+                  <span class="result-label">Result</span>
+                  <strong id="resultText">1 reaumur = 493.92 rankine</strong>
+                </div>
+                <div class="result-actions">
+                  <button class="copy-button" id="copyButton" type="button">Copy result</button>
+                  <button class="copy-button secondary" id="shareButton" type="button">Share</button>
+                </div>
+              </div>
+              <section class="converter-ad-slot" data-ad-placement="converter" aria-label="Converter advertisement placeholder">
+                <span>Advertisement</span>
+                <strong>Converter ad slot</strong>
+                <p>Reserved below the result so the calculator remains usable.</p>
+              </section>
+              <div class="definition-panel" id="definitionPanel">
+                <article>
+                  <span>From definition</span>
+                  <p id="fromDefinition">Reaumur is a historical temperature scale.</p>
+                </article>
+                <article>
+                  <span>To definition</span>
+                  <p id="toDefinition">Rankine is an absolute Fahrenheit-based temperature scale.</p>
+                </article>
+                <article>
+                  <span>Formula</span>
+                  <p id="formulaText">Convert the source temperature to Kelvin, then convert Kelvin to the target scale.</p>
+                </article>
+              </div>
+              <p class="conversion-note" id="conversionNote">Temperature conversion uses Kelvin as the intermediate absolute scale.</p>
+            </section>
+
+            <aside class="activity-panel" aria-label="Saved and recent conversions">
+              <aside class="sidebar-ad" data-ad-placement="sidebar" aria-label="Sidebar advertisement placeholder">
+                Advertisement
+              </aside>
+              <section>
+                <div class="activity-heading">
+                  <h3>Favorite converters</h3>
+                  <button type="button" id="clearFavorites">Clear</button>
+                </div>
+                <div class="mini-list" id="favoritesList"></div>
+              </section>
+              <section>
+                <div class="activity-heading">
+                  <h3>Recently used</h3>
+                  <button type="button" id="clearRecent">Clear</button>
+                </div>
+                <div class="mini-list" id="recentList"></div>
+              </section>
+              <section>
+                <div class="activity-heading">
+                  <h3>Conversion history</h3>
+                  <button type="button" id="clearHistory">Clear</button>
+                </div>
+                <div class="history-list" id="historyList"></div>
+              </section>
+            </aside>
+          </div>
+        </section>
+      </section>
+
+      <section class="seo-content">
+          <section class="in-content-ad adsense-placeholder" data-ad-placement="content-top" aria-label="Top advertisement placeholder">
+            <span>Advertisement</span>
+            <strong>Ad slot: content top (728x90)</strong>
+            <p>Reserved above the conversion cards and below the converter.</p>
+          </section>
+
+          <article class="seo-article">
+<h2>About Converting Reaumurs to Rankines</h2>
+<p>Reaumur and Rankine are both historical temperature scales no longer in everyday use — this conversion is mainly useful for historical reference or comparing older scientific texts against each other.</p>
+
+
+<div class="about-info-cards">
+  <div class="info-card">
+    <h3>Formula</h3>
+    <p class="info-card-formula">Convert the source temperature to Kelvin, then convert Kelvin to the target scale.</p>
+    <p>Both scales are converted through Kelvin as a common absolute reference point.</p>
+  </div>
+  <div class="info-card">
+    <h3>Simple example</h3>
+    <p class="info-card-formula">(0 − 32) × 5/9 = 491.67 °C</p>
+    <p><strong>0 reaumurs = 491.67 rankines.</strong></p>
+  </div>
+<div class="info-card">
+    <h3>Real-world example</h3>
+    <p class="info-card-formula">(0 − 32) × 5/9 = 491.67 °C</p>
+    <p><strong>0 reaumurs = 491.67 rankines.</strong></p>
+  </div>
+  <div class="info-card">
+    <h3>Conversion table</h3>
+    <table class="info-card-table">
+      <thead>
+        <tr><th scope="col">Reaumur (Re)</th><th scope="col">Rankine (R)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>-40 Re</td><td>401.67 R</td></tr>
+<tr><td>-20 Re</td><td>446.67 R</td></tr>
+<tr><td>0 Re</td><td>491.67 R</td></tr>
+<tr><td>20 Re</td><td>536.67 R</td></tr>
+<tr><td>37 Re</td><td>574.92 R</td></tr>
+<tr><td>100 Re</td><td>716.67 R</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<h3>Reverse conversion: Rankine to Reaumur</h3>
+<div class="info-card">
+  <p class="info-card-formula">(493.92 − 32) × 5/9 = 1 °C</p>
+  <p><strong>493.92 rankines = 1 reaumur.</strong></p>
+  <p class="info-card-formula">Convert the source temperature to Kelvin, then convert Kelvin to the target scale.</p>
+</div>
+<p>For a page dedicated to this direction, see <a href="../rankine-to-reaumur/">Rankine to Reaumur</a>.</p>
+
+
+
+<h3>Understanding the Reaumur (Re)</h3><p>Reaumur is a historical temperature scale.</p>
+
+
+<h3>Understanding the Rankine (R)</h3><p>Rankine is an absolute Fahrenheit-based temperature scale.</p>
+
+
+<div class="about-sources">
+
+
+</div>
+          </article>
+
+          <section class="in-content-ad adsense-placeholder" data-ad-placement="content-middle" aria-label="Middle advertisement placeholder">
+            <span>Advertisement</span>
+            <strong>Ad slot: content middle (728x90)</strong>
+            <p>Reserved between the cards and the FAQ so the page stays balanced.</p>
+          </section>
+
+          <section class="seo-faq" aria-label="FAQ">
+            <h2>Frequently asked questions</h2>
+            <div class="faq-item">
+              <h3>How many rankines are in 1 reaumur?</h3>
+              <p>1 reaumur equals 493.92 rankines, using the offset temperature formula rather than an estimate.</p>
+            </div>
+<div class="faq-item">
+              <h3>How do I convert reaumur to rankine?</h3>
+              <p>Use the formula shown above: it involves both a multiplication and an addition/subtraction because the two scales don&#039;t share a common zero point.</p>
+            </div>
+<div class="faq-item">
+              <h3>How do I convert rankine back to reaumur?</h3>
+              <p>Use the reverse factor: 1 rankine equals -218.0755556 reaumurs. You can also use the swap control in the converter above to flip the direction instantly.</p>
+            </div>
+<div class="faq-item">
+              <h3>What is a reaumur?</h3>
+              <p>Reaumur (Re) is a unit of temperature.</p>
+            </div>
+<div class="faq-item">
+              <h3>What is a rankine?</h3>
+              <p>Rankine (R) is a unit of temperature.</p>
+            </div>
+<div class="faq-item">
+              <h3>Is the Reaumur to Rankine conversion exact?</h3>
+              <p>Yes. Both scales are formally defined relative to the Kelvin scale, so the conversion formula is exact — the only rounding involved is in how many decimal places you choose to display.</p>
+            </div>
+          </section>
+
+          <section class="page-grid">
+            <article class="page-card">
+              <h2>Related conversions</h2>
+              <ul class="seo-link-list"><li><a href="../rankine-to-reaumur/">Rankine to Reaumur</a></li><li><a href="../celsius-to-rankine/">Celsius to Rankine</a></li><li><a href="../celsius-to-reaumur/">Celsius to Reaumur</a></li><li><a href="../fahrenheit-to-rankine/">Fahrenheit to Rankine</a></li><li><a href="../fahrenheit-to-reaumur/">Fahrenheit to Reaumur</a></li><li><a href="/temperature/">All temperature conversions</a></li></ul>
+            </article>
+          </section>
+      </section>
+
+    </main>
+
+  <script src="../../analytics-config.js" defer></script>
+<footer class="site-footer">
+          <div>
+            <a class="brand footer-brand" href="../../index.html" aria-label="Universal Converter home">
+              <img src="../../logo.svg" alt="" width="32" height="32">
+              <span>Universal Converter</span>
+            </a>
+            <p>Fast conversions for everyday, scientific, engineering, and business units.</p>
+          </div>
+          <nav aria-label="Footer navigation">
+            <a href="../../privacy.html">Privacy</a>
+            <a href="../../terms.html">Terms</a>
+            <a href="../../contact.html">Contact</a>
+            <a href="../../guides.html">Guides</a>
+            <a href="../../sitemap.html">Sitemap</a>
+          </nav>
+      </footer>
+</body>
+</html>

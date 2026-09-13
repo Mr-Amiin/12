@@ -1,0 +1,3164 @@
+:root {
+color-scheme: light;
+--bg: #f5f7fb;
+--surface: #ffffff;
+--surface-strong: #eef3f7;
+--text: #15202e;
+--muted: #5e6b78;
+--line: #d9e1ea;
+--accent: #0f9f9a;
+--accent-strong: #087d7a;
+--accent-soft: #dff7f4;
+--warm: #f4a83d;
+--danger: #cf3d4f;
+--shadow: 0 18px 50px rgba(21, 32, 46, 0.11);
+--radius: 8px;
+--header-height: 72px;
+--section-gap: 32px;
+--card-gap: 24px;
+--home-rhythm: clamp(2.5rem, 6vw, 5rem);
+font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+[data-theme="dark"] {
+color-scheme: dark;
+--bg: #121417;
+--surface: #1a1f24;
+--surface-strong: #232a31;
+--text: #f2f5f7;
+--muted: #a8b2bd;
+--line: #323b45;
+--accent: #35c4ba;
+--accent-strong: #72ded7;
+--accent-soft: #143f3d;
+--warm: #f6bd60;
+--danger: #ff6b7a;
+--shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+}
+/* WCAG AA contrast fixes (2.x): --accent-strong is a light, high-luminance
+   teal in dark mode (by design, for use as foreground text on dark
+   backgrounds). Several buttons instead use it as a *fill* with white text,
+   which drops to ~1.6:1 in dark mode. Swapping the button label to the dark
+   background color keeps the brand teal fill untouched and restores >10:1
+   contrast without changing any color variables. */
+[data-theme="dark"] .calculator-card button,
+[data-theme="dark"] .newsletter-form button,
+[data-theme="dark"] .admin-form button,
+[data-theme="dark"] .agri-tabs button.active,
+[data-theme="dark"] .page-cta,
+[data-theme="dark"] .admin-btn-primary,
+[data-theme="dark"] .swap-button {
+color: var(--bg);
+}
+/* Light-theme conversion-card hover/focus text was 4.45:1 against the
+   card's tinted surface (just under the 4.5:1 AA minimum for normal text).
+   A ~2% darker shade of the same teal restores AA without visibly changing
+   the brand color. */
+[data-theme="light"] .conversion-card:hover,
+[data-theme="light"] .conversion-card:focus-visible {
+color: #077a77;
+}
+* {
+box-sizing: border-box;
+}
+html {
+scroll-behavior: smooth;
+overflow-x: hidden;
+width: 100%;
+}
+body {
+margin: 0;
+min-width: 320px;
+background: linear-gradient(180deg, var(--bg), var(--surface-strong));
+color: var(--text);
+font-family: inherit;
+}
+.site-loader {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+z-index: 40;
+height: 3px;
+pointer-events: none;
+opacity: 0;
+visibility: hidden;
+transition: opacity 180ms ease, visibility 180ms ease;
+}
+.site-loader span {
+display: block;
+width: 42%;
+height: 100%;
+background: linear-gradient(90deg, var(--accent), var(--warm));
+animation: loaderSlide 900ms ease-in-out infinite;
+}
+body.is-loading .site-loader {
+opacity: 1;
+visibility: visible;
+}
+@keyframes loaderSlide {
+0% {
+transform: translateX(-100%);
+}
+100% {
+transform: translateX(240%);
+}
+}
+main {
+display: flex;
+flex-direction: column;
+}
+body,
+button,
+input,
+select,
+textarea {
+font: inherit;
+}
+a {
+color: inherit;
+text-decoration: none;
+}
+button,
+select,
+input,
+textarea {
+border-radius: var(--radius);
+}
+button {
+cursor: pointer;
+}
+img {
+display: block;
+max-width: 100%;
+}
+.visually-hidden {
+position: absolute;
+width: 1px;
+height: 1px;
+padding: 0;
+margin: -1px;
+overflow: hidden;
+clip: rect(0, 0, 0, 0);
+white-space: nowrap;
+border: 0;
+}
+.site-header {
+position: sticky;
+top: 0;
+z-index: 20;
+display: flex;
+min-height: var(--header-height);
+align-items: center;
+justify-content: space-between;
+gap: 1rem;
+padding: 0.85rem clamp(1rem, 4vw, 4rem);
+background: color-mix(in srgb, var(--surface) 86%, transparent);
+border-bottom: 1px solid var(--line);
+backdrop-filter: blur(18px);
+}
+.brand {
+display: inline-flex;
+align-items: center;
+gap: 0.7rem;
+font-weight: 800;
+color: var(--text);
+}
+.brand span {
+white-space: nowrap;
+}
+.top-nav,
+.site-footer nav {
+display: flex;
+align-items: center;
+gap: clamp(0.8rem, 2vw, 1.5rem);
+color: var(--muted);
+font-size: 0.96rem;
+}
+.site-footer nav {
+flex-wrap: wrap;
+}
+.top-nav a,
+.site-footer nav a,
+.text-link {
+position: relative;
+}
+.top-nav a {
+display: inline-flex;
+align-items: center;
+min-height: 34px;
+white-space: nowrap;
+}
+.top-nav a::after,
+.text-link::after {
+position: absolute;
+left: 0;
+right: 0;
+bottom: -0.28rem;
+height: 2px;
+content: "";
+background: var(--accent);
+transform: scaleX(0);
+transform-origin: left;
+transition: transform 180ms ease;
+}
+.top-nav a:hover::after,
+.text-link:hover::after {
+transform: scaleX(1);
+}
+.nav-dropdown {
+position: relative;
+display: inline-flex;
+align-items: center;
+}
+.nav-dropdown-toggle {
+display: inline-flex;
+align-items: center;
+gap: 0.35rem;
+min-height: 34px;
+padding: 0;
+color: inherit;
+font: inherit;
+white-space: nowrap;
+background: none;
+border: none;
+cursor: pointer;
+}
+.nav-dropdown-toggle .nav-caret {
+width: 9px;
+height: 9px;
+border-right: 1.5px solid currentColor;
+border-bottom: 1.5px solid currentColor;
+transform: rotate(45deg);
+transition: transform 160ms ease;
+}
+.nav-dropdown.is-open .nav-dropdown-toggle .nav-caret {
+transform: rotate(225deg);
+}
+.nav-dropdown-menu {
+position: absolute;
+top: calc(100% - 2px);
+left: 0;
+z-index: 30;
+display: none;
+min-width: 190px;
+margin: 0;
+padding: 0.4rem;
+padding-top: calc(0.4rem + 2px);
+list-style: none;
+background: var(--surface-strong);
+border: 1px solid var(--line);
+border-radius: var(--radius);
+box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+max-height: min(75vh, 560px);
+overflow-y: auto;
+overflow-x: hidden;
+overscroll-behavior: contain;
+scrollbar-width: thin;
+scrollbar-color: var(--line) transparent;
+}
+.nav-dropdown-menu::-webkit-scrollbar {
+width: 8px;
+}
+.nav-dropdown-menu::-webkit-scrollbar-track {
+background: transparent;
+}
+.nav-dropdown-menu::-webkit-scrollbar-thumb {
+background-color: var(--line);
+border-radius: 8px;
+}
+.nav-dropdown-menu::-webkit-scrollbar-thumb:hover {
+background-color: var(--muted);
+}
+.nav-dropdown-menu li {
+display: block;
+}
+.nav-dropdown-menu a {
+display: block;
+padding: 0.5rem 0.7rem;
+color: var(--text);
+font-size: 0.94rem;
+border-radius: calc(var(--radius) - 4px);
+white-space: nowrap;
+}
+.nav-dropdown-menu a:hover,
+.nav-dropdown-menu a:focus-visible {
+background: color-mix(in srgb, var(--accent) 14%, transparent);
+}
+@media (min-width: 821px) {
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu {
+display: block;
+}
+}
+.nav-dropdown.is-open .nav-dropdown-menu {
+display: block;
+}
+.category-dropdown-container {
+display: none;
+}
+.theme-toggle {
+display: inline-flex;
+align-items: center;
+gap: 0.55rem;
+min-height: 42px;
+padding: 0.4rem 0.7rem;
+color: var(--text);
+background: var(--surface-strong);
+border: 1px solid var(--line);
+}
+@media (min-width: 821px) and (max-width: 1024px) {
+.brand,
+.theme-toggle {
+flex-shrink: 0;
+}
+.top-nav {
+flex: 1 1 auto;
+min-width: 0;
+overflow-x: auto;
+scrollbar-width: thin;
+}
+}
+.theme-dot {
+width: 18px;
+height: 18px;
+border-radius: 50%;
+background: linear-gradient(135deg, var(--accent), var(--warm));
+box-shadow: inset -4px -4px 0 rgba(255, 255, 255, 0.35);
+}
+.hero {
+position: relative;
+min-height: auto;
+display: block;
+padding: 0;
+overflow: hidden;
+isolation: isolate;
+order: 0;
+}
+.hero::after {
+position: absolute;
+inset: auto 0 0 0;
+height: 26%;
+content: "";
+background: linear-gradient(180deg, transparent, var(--bg));
+z-index: -1;
+}
+#heroCanvas {
+position: absolute;
+inset: 0;
+width: 100%;
+height: 100%;
+z-index: -2;
+}
+.hero-content {
+width: min(980px, calc(100% - 2rem));
+margin: 0 auto;
+}
+/* SEO conversion pages (.hero.seo-top) must have their H1/description
+   positioned at the same left edge as the main content below (category/
+   converter/sidebar), not centered as a standalone block the way the
+   homepage's marketing hero is. The homepage's .hero-content above is
+   untouched - this only removes the centering/width-cap when the
+   .seo-top class is also present on the ancestor .hero section. */
+.seo-top .hero-content {
+width: 100%;
+max-width: none;
+margin: 0;
+}
+.hero-content .eyebrow {
+margin-bottom: 0.4rem;
+}
+.breadcrumb {
+margin: 0;
+padding: 0;
+display: flex;
+flex-wrap: wrap;
+gap: 0.4rem;
+color: var(--muted);
+font-size: 0.95rem;
+}
+.breadcrumb a,
+.breadcrumb span {
+display: inline-flex;
+align-items: center;
+}
+.eyebrow {
+margin: 0 0 0.8rem;
+color: var(--accent-strong);
+font-size: 0.82rem;
+font-weight: 800;
+text-transform: uppercase;
+letter-spacing: 0;
+}
+.hero h1,
+.section-heading h2,
+.guide-copy h2,
+.future-section h2,
+.page-hero h1 {
+margin: 0;
+color: var(--text);
+line-height: 1.05;
+}
+.hero h1 {
+max-width: 760px;
+font-size: 3.5rem;
+margin: 0;
+}
+/* SEO conversion pages (.hero.seo-top) use long, dynamic titles like
+   "Attonewton Meters to Piconewton Meters Converter" that are far
+   longer than the homepage's fixed marketing headline - this overrides
+   just the SEO-page H1 to a smaller size with a slightly looser
+   line-height so wrapped lines stay readable, without touching the
+   homepage's .hero h1 above (same selector specificity, so source
+   order after the base rule is what makes this win only where the
+   .seo-top class is also present). */
+.seo-top h1 {
+font-size: 48px;
+line-height: 1.12;
+text-align: left;
+}
+@media (min-width: 821px) and (max-width: 1024px) {
+.seo-top h1 {
+font-size: 40px;
+line-height: 1.12;
+text-align: left;
+}
+}
+.hero-subtitle {
+max-width: 720px;
+margin: 0.6rem 0 1.4rem;
+color: var(--muted);
+font-size: 1.05rem;
+line-height: 1.5;
+}
+.hero-search {
+position: relative;
+width: min(760px, 100%);
+}
+.hero-search input,
+.compact-search,
+.unit-box input,
+.unit-box select,
+.context-grid input,
+.converter-controls input,
+.converter-controls select,
+.calculator-card input,
+.calculator-card select,
+.newsletter-form input,
+.admin-form input,
+.admin-form select,
+.page-form input,
+.page-form textarea {
+width: 100%;
+color: var(--text);
+background: var(--surface);
+border: 1px solid var(--line);
+outline: none;
+transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+.hero-search input {
+min-height: 54px;
+padding: 0 1.2rem;
+font-size: 1rem;
+box-shadow: var(--shadow);
+}
+.hero-search input:focus,
+.compact-search:focus,
+.unit-box input:focus,
+.unit-box select:focus,
+.context-grid input:focus,
+.converter-controls input:focus,
+.converter-controls select:focus,
+.calculator-card input:focus,
+.calculator-card select:focus,
+.newsletter-form input:focus,
+.admin-form input:focus,
+.admin-form select:focus,
+.page-form input:focus,
+.page-form textarea:focus {
+border-color: var(--accent);
+box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+.search-results {
+/* Positioned dynamically as position:fixed by app.js (see positionSearchDropdown),
+   which portals this element to <body> so it can never be clipped by an
+   ancestor's overflow:hidden (e.g. .hero) and always renders above every
+   other section, including the sticky header. Do not reintroduce
+   position:absolute here without also removing the JS portal logic. */
+position: fixed;
+display: none;
+max-height: min(65vh, 600px);
+overflow-y: auto;
+overscroll-behavior: contain;
+padding: 0.45rem;
+background: var(--surface);
+border: 1px solid var(--line);
+border-radius: var(--radius);
+box-shadow: var(--shadow);
+z-index: 9999;
+}
+.search-results.active,
+.page-form label {
+display: grid;
+gap: 0.35rem;
+}
+.search-results button,
+.search-results a,
+.category-list button,
+.mini-list button {
+width: 100%;
+text-align: left;
+color: var(--text);
+background: transparent;
+border: 1px solid transparent;
+}
+.search-results button,
+.search-results a {
+display: block;
+padding: 0.75rem;
+}
+.search-results button:hover,
+.search-results a:hover,
+.category-list button:hover,
+.mini-list button:hover {
+background: var(--surface-strong);
+border-color: var(--line);
+}
+.search-result-title,
+.category-name {
+display: block;
+font-weight: 800;
+}
+.search-result-meta {
+display: block;
+margin-top: 0.16rem;
+color: var(--muted);
+font-size: 0.88rem;
+}
+.search-results a,
+.search-results button {
+display: flex;
+flex-direction: column;
+gap: 0.15rem;
+}
+.search-result-row {
+display: flex;
+align-items: center;
+gap: 0.5rem;
+}
+.search-result-title mark,
+.search-result-meta mark {
+background: color-mix(in srgb, var(--accent) 35%, transparent);
+color: inherit;
+border-radius: 3px;
+padding: 0 1px;
+}
+.search-result-badge {
+flex: 0 0 auto;
+font-size: 0.72rem;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 0.02em;
+color: var(--accent);
+background: color-mix(in srgb, var(--accent) 14%, transparent);
+border-radius: 999px;
+padding: 0.12rem 0.55rem;
+}
+.search-results button.active,
+.search-results a.active {
+background: var(--surface-strong);
+border-color: var(--accent);
+}
+.search-results button[disabled] {
+cursor: default;
+color: var(--muted);
+}
+.popular-actions {
+display: flex;
+flex-wrap: wrap;
+gap: 0.6rem;
+margin-top: 0.8rem;
+}
+.popular-actions button,
+.copy-button,
+.favorite-button,
+.page-cta,
+.activity-heading button {
+min-height: 42px;
+padding: 0.58rem 0.88rem;
+border: 1px solid var(--line);
+background: var(--surface);
+color: var(--text);
+transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+.popular-actions button:hover,
+.copy-button:hover,
+.favorite-button:hover,
+.page-cta:hover,
+.activity-heading button:hover {
+transform: translateY(-1px);
+border-color: var(--accent);
+}
+.hero .popular-actions button {
+min-height: 36px;
+padding: 0.42rem 0.75rem;
+font-size: 0.88rem;
+}
+@media (min-width: 821px) {
+.hero-subtitle {
+max-width: 900px;
+margin: 0.5rem 0 0.8rem;
+}
+.hero .popular-actions {
+margin-top: 0.4rem;
+}
+}
+.recent-searches {
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+gap: 0.55rem;
+min-height: 38px;
+margin-top: 0.6rem;
+color: var(--muted);
+}
+.recent-searches:empty {
+display: none;
+}
+.recent-searches span {
+font-size: 0.84rem;
+font-weight: 800;
+}
+.recent-searches a,
+.recent-searches button {
+min-height: 34px;
+padding: 0.42rem 0.66rem;
+color: var(--text);
+background: color-mix(in srgb, var(--surface) 82%, transparent);
+border: 1px solid var(--line);
+border-radius: var(--radius);
+}
+.recent-searches a:hover,
+.recent-searches button:hover {
+border-color: var(--accent);
+background: var(--surface);
+}
+.header-ad {
+order: 2;
+}
+.popular-conversions {
+order: 4;
+}
+.category-overview {
+order: 3;
+}
+.why-section {
+order: 6;
+}
+.faq-section {
+order: 7;
+}
+.featured-guides {
+order: 8;
+}
+.ad-band:not(.header-ad) {
+order: 9;
+}
+.tools-section {
+order: 10;
+}
+.business-section {
+order: 12;
+}
+.blog-system {
+order: 14;
+}
+.admin-section {
+order: 15;
+}
+.tool-section,
+.category-overview,
+.guide-preview,
+.future-section,
+.popular-conversions,
+.tools-section,
+.business-section,
+.trust-section,
+.why-section,
+.faq-section,
+.featured-guides,
+.newsletter-section,
+.blog-system,
+.admin-section,
+.page-shell {
+width: min(1420px, calc(100% - 2rem));
+margin: 0 auto;
+}
+.tool-section {
+order: 1;
+padding: clamp(2.5rem, 6vw, 5rem) 0;
+}
+.section-heading {
+display: flex;
+align-items: end;
+justify-content: space-between;
+gap: 1.4rem;
+margin-bottom: 1.4rem;
+}
+.section-heading h2,
+.guide-copy h2,
+.future-section h2 {
+font-size: 2.65rem;
+}
+.metric-strip {
+display: flex;
+flex-wrap: wrap;
+justify-content: flex-end;
+gap: 0.55rem;
+color: var(--muted);
+}
+.metric-strip span {
+padding: 0.45rem 0.7rem;
+background: var(--surface);
+border: 1px solid var(--line);
+border-radius: var(--radius);
+}
+.tool-layout {
+display: grid;
+grid-template-columns: minmax(230px, 280px) minmax(0, 1fr) minmax(250px, 320px);
+gap: 1rem;
+align-items: start;
+}
+.seo-top {
+padding: clamp(1.5rem, 4vw, 2.5rem) 0 0;
+}
+.seo-grid {
+display: grid;
+grid-template-columns: minmax(220px, 260px) minmax(0, 1fr) minmax(240px, 320px);
+gap: 1rem;
+align-items: stretch;
+}
+.seo-grid > * {
+display: flex;
+flex-direction: column;
+gap: 1rem;
+}
+.seo-column {
+background: color-mix(in srgb, var(--surface) 96%, transparent);
+border: 1px solid var(--line);
+border-radius: var(--radius);
+box-shadow: var(--shadow);
+padding: 1.1rem;
+}
+.seo-converter-column {
+min-height: 540px;
+}
+.seo-converter-column #seoConverter {
+flex: 1 1 auto;
+min-height: 0;
+}
+.seo-body {
+padding: clamp(2rem, 5vw, 4rem) 0;
+margin-top: 2rem;
+}
+.seo-page .page-grid {
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 1rem;
+}
+.seo-page .page-card {
+padding: 0.9rem;
+min-height: auto;
+}
+.seo-page .page-card h2 {
+margin: 0 0 0.45rem 0;
+font-size: 1.15rem;
+}
+.seo-page .seo-reference-grid,
+.seo-page .seo-related-grid {
+align-items: stretch;
+gap: var(--card-gap);
+margin-top: 0;
+margin-bottom: var(--section-gap);
+}
+.seo-page .seo-reference-grid > .page-card,
+.seo-page .seo-related-grid > .page-card {
+height: 100%;
+}
+.seo-page .seo-related-grid {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+/* Layout fix 2.0: contain the reference/related cards (Common Measurements,
+   Conversion Formulas, Practical Examples, Related Guides, Related Categories)
+   within their parent grid at every breakpoint. Scoped to .seo-reference-grid
+   and .seo-related-grid only, so converter pages and guide pages (which reuse
+   .page-grid/.page-card but not these two subclasses) are unaffected. */
+.seo-page .seo-reference-grid {
+grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.seo-page .seo-reference-grid > .page-card,
+.seo-page .seo-related-grid > .page-card {
+min-width: 0;
+overflow-wrap: anywhere;
+word-break: break-word;
+}
+.seo-page .seo-reference-grid .admin-table-wrap {
+max-width: 100%;
+}
+@media (max-width: 900px) {
+.seo-page .seo-reference-grid,
+.seo-page .seo-related-grid {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.seo-page .seo-reference-grid > .page-card,
+.seo-page .seo-related-grid > .page-card {
+width: 100%;
+}
+}
+@media (max-width: 600px) {
+.seo-page .seo-reference-grid,
+.seo-page .seo-related-grid {
+grid-template-columns: 1fr;
+}
+.seo-page .seo-reference-grid > .page-card,
+.seo-page .seo-related-grid > .page-card {
+height: auto;
+}
+}
+/* Vertical rhythm fix 2.0: normalize the gap between every major section
+   (intro article, reference cards, ad, FAQ, related cards) on the 27 category
+   hub pages to --section-gap. Scoped with :has(> .seo-reference-grid) so it
+   only applies where a .seo-content wrapper actually contains the category
+   reference grid, leaving conversion pages and guide pages (which reuse
+   .seo-content/.seo-article/.in-content-ad/.seo-faq without that grid)
+   untouched. */
+.seo-page .seo-content:has(> .seo-reference-grid) > .seo-article,
+.seo-page .seo-content:has(> .seo-reference-grid) > .in-content-ad,
+.seo-page .seo-content:has(> .seo-reference-grid) > .seo-faq {
+margin-top: 0;
+margin-bottom: var(--section-gap);
+}
+.seo-page .seo-content:has(> .seo-reference-grid) > .seo-article:first-child {
+margin-top: var(--section-gap);
+}
+.seo-page .seo-faq,
+.seo-page .seo-article {
+width: min(1420px, calc(100% - 2rem));
+margin: 1rem auto 0;
+padding: 1rem;
+background: var(--surface);
+border: 1px solid var(--line);
+border-radius: var(--radius);
+box-shadow: var(--shadow-sm);
+}
+/* Spacing fix: FAQ -> Related conversions gap. The plain .page-grid that
+   holds the Related conversions card (on single conversion pages like
+   kg-to-lbs) previously had no margin-top of its own, so it should have
+   sat flush against .seo-faq's box — but .seo-faq only set margin-top
+   (1rem) and never a margin-bottom, leaving that value to fall through to
+   whatever the browser/cascade resolved elsewhere, and the surrounding
+   .page-shell bottom padding (up to 5rem before the :has() override below
+   engages) made any inherited gap read as a large empty band. Set both
+   ends explicitly and symmetrically so the visible gap is always exactly
+   one deliberate, responsive step, never a default or inherited value.
+   Scoped to the plain .page-grid (not .seo-reference-grid/.seo-related-grid,
+   the category-hub variants, which already manage their own spacing via
+   the --card-gap/--section-gap rules above) so hub pages are unaffected. */
+.seo-page .seo-faq {
+margin-bottom: 0;
+}
+.seo-page .page-grid:not(.seo-reference-grid):not(.seo-related-grid) {
+margin-top: 1rem;
+margin-bottom: 0;
+}
+/* Related conversions moves to the bottom of conversion pages (directly
+   below the FAQ, directly above the footer) but keeps its original card:
+   a single .page-card inside the same bare .page-grid wrapper it always
+   used (previously shared with the removed Formula/Conversion table
+   cards). Reusing the original classes as-is keeps its width, padding,
+   border, radius, and typography identical to the original design instead
+   of introducing a new full-width section style. */
+.seo-page .seo-faq {
+display: grid;
+gap: 0.85rem;
+}
+.seo-page .seo-faq h2,
+.seo-page .seo-article h2 {
+margin: 0;
+font-size: 1.15rem;
+}
+.seo-page .faq-item {
+padding: 0.85rem 0.9rem;
+background: color-mix(in srgb, var(--surface-strong) 72%, transparent);
+border: 1px solid var(--line);
+border-radius: calc(var(--radius) - 2px);
+}
+.seo-page .faq-item h3 {
+margin: 0 0 0.35rem;
+font-size: 1rem;
+}
+.seo-page .faq-item p {
+margin: 0;
+color: var(--muted);
+line-height: 1.6;
+}
+.seo-page .seo-article p + p {
+margin-top: 0.85rem;
+}
+/* Dual-unit "About This Conversion" content (Phase: About-section upgrade).
+   Keeps the existing .seo-article card but adds scannable sub-heading,
+   list, origin-note, and sources styling for the researched per-unit
+   history/uses content assembled by generate_about_section.py. */
+.seo-page .seo-article h3 {
+margin: 1.5rem 0 0.5rem;
+font-size: 1.02rem;
+color: var(--text);
+}
+.seo-page .seo-article h3:first-of-type {
+margin-top: 0.5rem;
+}
+.seo-page .seo-article ul {
+margin: 0.4rem 0 0.85rem;
+padding-left: 1.2rem;
+display: grid;
+gap: 0.35rem;
+}
+.seo-page .seo-article ul li {
+line-height: 1.6;
+color: var(--muted);
+}
+.seo-page .seo-article .unit-origin-note {
+background: color-mix(in srgb, var(--surface-strong) 72%, transparent);
+border: 1px solid var(--line);
+border-radius: calc(var(--radius) - 2px);
+padding: 0.7rem 0.85rem;
+font-size: 0.92rem;
+line-height: 1.55;
+}
+/* Formula / worked-example / conversion-table info cards, shown directly
+   under the About-section intro paragraph, before the unit history. */
+.seo-page .seo-article .about-info-cards {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+gap: 0.85rem;
+margin: 1rem 0 1.5rem;
+}
+.seo-page .seo-article .info-card {
+background: color-mix(in srgb, var(--surface-strong) 72%, transparent);
+border: 1px solid var(--line);
+border-radius: calc(var(--radius) - 2px);
+padding: 0.9rem 1rem;
+}
+.seo-page .seo-article .info-card h3 {
+margin: 0 0 0.5rem;
+font-size: 0.95rem;
+}
+.seo-page .seo-article .info-card p {
+margin: 0 0 0.5rem;
+font-size: 0.88rem;
+line-height: 1.55;
+color: var(--muted);
+}
+.seo-page .seo-article .info-card p:last-child {
+margin-bottom: 0;
+}
+.seo-page .seo-article .info-card-formula {
+font-family: var(--font-mono, ui-monospace, "SFMono-Regular", Menlo, monospace);
+font-size: 0.95rem !important;
+font-weight: 600;
+color: var(--text) !important;
+background: var(--surface);
+border: 1px solid var(--line);
+border-radius: calc(var(--radius) - 4px);
+padding: 0.5rem 0.65rem;
+overflow-x: auto;
+}
+.seo-page .seo-article .info-card-table {
+width: 100%;
+border-collapse: collapse;
+font-size: 0.85rem;
+}
+.seo-page .seo-article .info-card-table th,
+.seo-page .seo-article .info-card-table td {
+text-align: right;
+padding: 0.35rem 0.4rem;
+border-bottom: 1px solid var(--line);
+}
+.seo-page .seo-article .info-card-table th:first-child,
+.seo-page .seo-article .info-card-table td:first-child {
+text-align: left;
+}
+.seo-page .seo-article .info-card-table thead th {
+color: var(--muted);
+font-weight: 600;
+border-bottom: 1px solid var(--line);
+}
+.seo-page .seo-article .info-card-table tbody tr:last-child td {
+border-bottom: none;
+}
+.seo-page .seo-article .about-sources {
+margin-top: 1.25rem;
+padding-top: 0.9rem;
+border-top: 1px dashed var(--line);
+display: grid;
+gap: 0.6rem;
+}
+.seo-page .seo-article .about-sources h4 {
+margin: 0 0 0.3rem;
+font-size: 0.85rem;
+text-transform: uppercase;
+letter-spacing: 0.03em;
+color: var(--muted);
+}
+.seo-page .seo-article .source-list {
+margin: 0;
+padding-left: 1.1rem;
+font-size: 0.85rem;
+color: var(--muted);
+display: grid;
+gap: 0.25rem;
+}
+.seo-page .tool-section {
+display: block;
+/* The base .tool-section rule below (shared with the homepage's much
+   larger "world-scale conversion engine" section) sets padding up to
+   clamp(2.5rem, 6vw, 5rem) — as much as 80px — above AND below its
+   content. On the compact SEO conversion page that reads as a huge
+   empty band above and below the converter, disconnected from the rest
+   of the page's ~16-32px rhythm. Scoped to .seo-page only, so the
+   homepage's .tool-section is untouched; replace it with the same
+   --section-gap token already used for major-section spacing elsewhere
+   on this page (About/FAQ/ad/related), so the converter sits with a
+   normal, intentional gap instead of an oversized one. */
+padding: var(--section-gap) 0;
+}
+.seo-page .ad-band:not(.header-ad) {
+order: 0;
+}
+.seo-page .page-shell .tool-section {
+width: 100%;
+margin: 0;
+}
+.seo-feature-list,
+.seo-link-list {
+margin: 0;
+padding: 0;
+list-style: none;
+display: grid;
+gap: 0.65rem;
+}
+.seo-feature-list li,
+.seo-link-list li {
+color: var(--muted);
+line-height: 1.5;
+}
+/* SEO conversion pages: the Related conversions card sits alone in a bare
+   .page-grid (no .seo-reference-grid/.seo-related-grid modifier — those
+   are the category-hub variants and already have their own responsive
+   rules above, so they're untouched here). On desktop this keeps the
+   card's original ~1/3-of-content-width footprint from when it shared
+   this grid with the Formula/Conversion table cards. Below 821px it
+   stretches to the full content width, same as it always has, so it
+   doesn't get squeezed into a narrow column with nothing beside it. */
+@media (max-width: 820px) {
+.seo-page .page-grid:not(.seo-reference-grid):not(.seo-related-grid) {
+grid-template-columns: 1fr;
+}
+.seo-page .page-grid:not(.seo-reference-grid):not(.seo-related-grid) > .page-card {
+width: 100%;
+max-width: 100%;
+min-width: 0;
+box-sizing: border-box;
+}
+.seo-page .page-grid:not(.seo-reference-grid):not(.seo-related-grid) .page-card p,
+.seo-page .page-grid:not(.seo-reference-grid):not(.seo-related-grid) .page-card li {
+overflow-wrap: anywhere;
+word-break: break-word;
+}
+}
+@media (max-width: 900px) {
+.seo-grid,
+.tool-layout {
+grid-template-columns: 1fr;
+}
+.seo-converter-column {
+min-height: auto;
+}
+.seo-body .page-grid {
+grid-template-columns: 1fr;
+}
+}
+.category-panel,
+.converter-panel,
+.activity-panel,
+.overview-grid a,
+guide-preview,
+.future-grid article,
+.popular-grid a,
+.calculator-card,
+.ad-band,
+.trust-grid article,
+.newsletter-section,
+.blog-grid article,
+.admin-section,
+.page-card,
+.page-form {
+background: color-mix(in srgb, var(--surface) 96%, transparent);
+border: 1px solid var(--line);
+border-radius: var(--radius);
+box-shadow: var(--shadow);
+}
+.category-panel,
+.activity-panel {
+position: sticky;
+top: calc(var(--header-height) + 1rem);
+padding: 1rem;
+}
+.field-label,
+.unit-box span,
+.result-label,
+.panel-kicker,
+.context-copy,
+.page-form label {
+color: var(--muted);
+font-size: 0.84rem;
+font-weight: 800;
+}
+.compact-search {
+min-height: 44px;
+margin: 0.45rem 0 0.9rem;
+padding: 0 0.8rem;
+}
+.category-list {
+display: grid;
+gap: 0.45rem;
+max-height: 640px;
+overflow: auto;
+padding-right: 0.1rem;
+}
+.category-list button {
+display: grid;
+gap: 0.25rem;
+padding: 0.7rem 0.75rem;
+}
+.category-row {
+display: grid;
+grid-template-columns: 42px minmax(0, 1fr);
+gap: 0.65rem;
+align-items: center;
+}
+.category-icon,
+.overview-icon {
+display: inline-grid;
+place-items: center;
+width: 42px;
+height: 34px;
+color: #ffffff;
+background: linear-gradient(135deg, var(--accent), var(--warm));
+border-radius: var(--radius);
+font-size: 0.66rem;
+font-weight: 900;
+text-align: center;
+}
+.overview-icon {
+margin-bottom: 0.75rem;
+}
+.category-list button.active {
+background: var(--accent-soft);
+border-color: color-mix(in srgb, var(--accent) 55%, var(--line));
+}
+.category-meta {
+color: var(--muted);
+font-size: 0.84rem;
+}
+.converter-panel {
+padding: clamp(1rem, 3vw, 1.4rem);
+}
+.converter-header {
+display: flex;
+justify-content: space-between;
+gap: 1rem;
+margin-bottom: 1rem;
+}
+.converter-header h2 {
+margin: 0.2rem 0 0.35rem;
+font-size: 2rem;
+}
+.converter-header p {
+margin: 0;
+}
+#activeCategoryDescription {
+color: var(--muted);
+line-height: 1.5;
+}
+.favorite-button {
+align-self: start;
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+white-space: nowrap;
+}
+.favorite-button.is-active {
+color: #101318;
+background: var(--warm);
+border-color: var(--warm);
+}
+.converter-grid {
+display: grid;
+grid-template-columns: minmax(0, 1fr) 54px minmax(0, 1fr);
+gap: 0.8rem;
+align-items: center;
+}
+.unit-box {
+display: grid;
+gap: 0.55rem;
+min-width: 0;
+padding: 0.9rem;
+background: var(--surface-strong);
+border: 1px solid var(--line);
+border-radius: var(--radius);
+}
+.unit-box input {
+min-height: 56px;
+padding: 0 0.75rem;
+font-size: 1.65rem;
+font-weight: 800;
+}
+.unit-box select {
+min-height: 44px;
+padding: 0 0.65rem;
+}
+.swap-button {
+width: 54px;
+height: 54px;
+color: #ffffff;
+background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+border: 0;
+font-size: 1.55rem;
+box-shadow: 0 12px 26px color-mix(in srgb, var(--accent) 28%, transparent);
+}
+.swap-button:hover {
+transform: rotate(180deg);
+transition: transform 220ms ease;
+}
+.context-panel {
+margin-top: 0.9rem;
+padding: 0.9rem;
+background: color-mix(in srgb, var(--surface-strong) 70%, transparent);
+border: 1px dashed var(--line);
+border-radius: var(--radius);
+}
+.converter-controls {
+display: grid;
+grid-template-columns: repeat(2, minmax(0, 1fr));
+gap: 0.8rem;
+margin-top: 0.9rem;
+}
+.converter-controls label,
+.calculator-card label,
+.admin-form label,
+.seo-category-label {
+display: grid;
+gap: 0.35rem;
+color: var(--muted);
+font-size: 0.84rem;
+font-weight: 800;
+}
+.seo-category-label {
+min-height: 44px;
+padding: 0.7rem;
+background: var(--surface-strong);
+border: 1px solid var(--line);
+border-radius: var(--radius);
+}
+.seo-category-label strong {
+color: var(--text);
+font-size: 0.95rem;
+}
+.converter-controls input,
+.converter-controls select,
+.calculator-card input,
+.calculator-card select,
+.newsletter-form input,
+.admin-form input,
+.admin-form select {
+min-height: 44px;
+padding: 0 0.7rem;
+}
+.context-panel[data-mode="electricity"] .agriculture-context,
+.context-panel[data-mode="agriculture"] .electricity-context {
+display: none;
+}
+.context-copy {
+display: flex;
+flex-wrap: wrap;
+gap: 0.4rem 0.7rem;
+align-items: baseline;
+margin-bottom: 0.7rem;
+}
+.context-grid {
+display: grid;
+grid-template-columns: repeat(4, minmax(0, 1fr));
+gap: 0.7rem;
+}
+.context-grid label {
+display: grid;
+gap: 0.35rem;
+color: var(--muted);
+font-size: 0.86rem;
+font-weight: 700;
+}
+.context-grid input {
+min-height: 42px;
+padding: 0 0.65rem;
+}
+.result-bar {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 1rem;
+margin-top: 1rem;
+padding: 1rem;
+background: linear-gradient(135deg, color-mix(in srgb, var(--accent-soft) 82%, transparent), color-mix(in srgb, var(--surface) 92%, transparent));
+border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--line));
+border-radius: var(--radius);
+}
+.result-bar strong {
+display: block;
+margin-top: 0.25rem;
+font-size: 1.35rem;
+overflow-wrap: anywhere;
+}
+.copy-button {
+background: var(--text);
+color: var(--surface);
+border-color: var(--text);
+white-space: nowrap;
+}
+.copy-button.secondary {
+background: var(--surface);
+color: var(--text);
+border-color: var(--line);
+}
+.result-actions {
+display: flex;
+flex-wrap: wrap;
+gap: 0.55rem;
+justify-content: flex-end;
+}
+.definition-panel {
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 0.8rem;
+margin-top: 0.9rem;
+}
+.definition-panel article {
+padding: 0.85rem;
+background: var(--surface-strong);
+border: 1px solid var(--line);
+border-radius: var(--radius);
+}
+.definition-panel span {
+display: block;
+color: var(--muted);
+font-size: 0.78rem;
+font-weight: 800;
+text-transform: uppercase;
+letter-spacing: 0;
+}
+.definition-panel p {
+margin: 0.35rem 0 0;
+color: var(--text);
+line-height: 1.55;
+}
+.conversion-note {
+min-height: 1.5rem;
+margin: 0.8rem 0 0;
+color: var(--muted);
+line-height: 1.55;
+}
+.activity-panel {
+display: grid;
+gap: 1.2rem;
+max-height: calc(100vh - var(--header-height) - 2rem);
+overflow-y: auto;
+overscroll-behavior: contain;
+align-content: start;
+}
+.activity-heading {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 0.7rem;
+margin-bottom: 0.6rem;
+}
+.activity-heading h3 {
+margin: 0;
+font-size: 1rem;
+}
+.activity-heading button {
+min-height: 32px;
+padding: 0.3rem 0.55rem;
+color: var(--muted);
+font-size: 0.82rem;
+}
+.mini-list,
+.history-list {
+display: grid;
+gap: 0.45rem;
+}
+.mini-list button,
+.history-item {
+padding: 0.65rem;
+background: var(--surface-strong);
+border: 1px solid var(--line);
+border-radius: var(--radius);
+}
+.empty-state {
+margin: 0;
+color: var(--muted);
+font-size: 0.9rem;
+line-height: 1.5;
+}
+.history-item strong {
+display: block;
+overflow-wrap: anywhere;
+font-size: 0.92rem;
+}
+.history-item span {
+display: block;
+margin-top: 0.18rem;
+color: var(--muted);
+font-size: 0.82rem;
+}
+.category-overview,
+.future-section,
+.popular-conversions,
+.tools-section,
+.business-section,
+.why-section,
+.faq-section,
+.featured-guides,
+.blog-system,
+.admin-section {
+padding: clamp(2.5rem, 6vw, 5rem) 0;
+}
+.trust-section {
+order: 5;
+width: min(1420px, calc(100% - 2rem));
+margin: 0 auto;
+display: grid;
+grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+gap: 1rem;
+align-items: start;
+padding: clamp(2rem, 5vw, 4rem) 0;
+}
+.trust-section h2 {
+margin: 0;
+font-size: 2.4rem;
+line-height: 1.08;
+}
+.trust-section p {
+color: var(--muted);
+line-height: 1.65;
+}
+.trust-grid {
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 1rem;
+}
+.trust-grid article {
+padding: 1rem;
+}
+.trust-grid h3 {
+margin: 0 0 0.45rem;
+}
+.trust-grid a {
+display: inline-flex;
+margin-top: 0.45rem;
+color: var(--accent-strong);
+font-weight: 800;
+}
+.overview-grid,
+.future-grid,
+.popular-grid,
+.calculator-grid,
+.blog-grid {
+display: grid;
+grid-template-columns: repeat(4, minmax(0, 1fr));
+gap: 1rem;
+}
+.popular-grid a {
+display: grid;
+gap: 0.45rem;
+padding: 1rem;
+}
+.popular-grid span,
+.blog-grid article span {
+color: var(--accent-strong);
+font-size: 0.78rem;
+font-weight: 800;
+text-transform: uppercase;
+letter-spacing: 0;
+}
+.popular-grid strong {
+color: var(--text);
+line-height: 1.4;
+}
+.popular-grid small,
+.blog-grid p,
+.calculator-card p,
+.newsletter-section p,
+.admin-item span {
+color: var(--muted);
+line-height: 1.55;
+}
+.ad-band,
+.converter-ad-slot,
+.in-content-ad {
+width: min(1420px, calc(100% - 2rem));
+min-height: 112px;
+margin: 1rem auto;
+display: grid;
+place-items: center;
+text-align: center;
+padding: 1rem;
+background:
+linear-gradient(135deg, color-mix(in srgb, var(--surface-strong) 82%, transparent), color-mix(in srgb, var(--surface) 95%, transparent));
+box-shadow: none;
+}
+.converter-ad-slot,
+.in-content-ad {
+width: 100%;
+min-height: 96px;
+border: 1px dashed var(--line);
+border-radius: var(--radius);
+}
+.converter-ad-slot {
+margin: 1rem 0;
+}
+.in-content-ad {
+margin: 1rem 0 1.2rem;
+}
+.adsense-placeholder {
+overflow: hidden;
+}
+.adsense-placeholder[data-ad-status="placeholder"] {
+background:
+linear-gradient(135deg, color-mix(in srgb, var(--surface-strong) 78%, transparent), color-mix(in srgb, var(--surface) 96%, transparent));
+}
+.ad-band span,
+.converter-ad-slot span,
+.in-content-ad span,
+.sidebar-ad span {
+color: var(--muted);
+font-size: 0.76rem;
+font-weight: 800;
+text-transform: uppercase;
+letter-spacing: 0;
+}
+.ad-band strong,
+.converter-ad-slot strong,
+.in-content-ad strong {
+margin-top: 0.2rem;
+}
+.ad-band p,
+.converter-ad-slot p,
+.in-content-ad p {
+margin: 0.15rem 0 0;
+color: var(--muted);
+}
+.sidebar-ad {
+position: sticky;
+top: 0;
+z-index: 1;
+display: grid;
+gap: 0.25rem;
+min-height: 280px;
+padding: 1rem;
+place-items: center;
+text-align: center;
+color: var(--muted);
+font-size: 0.76rem;
+font-weight: 800;
+text-transform: uppercase;
+letter-spacing: 0;
+background: color-mix(in srgb, var(--surface-strong) 76%, transparent);
+border: 1px dashed var(--line);
+border-radius: var(--radius);
+}
+.adsbygoogle {
+display: block;
+width: 100%;
+min-height: 90px;
+margin: 0 auto;
+}
+.sidebar-ad .adsbygoogle {
+min-height: 280px;
+}
+.ad-slot .adsbygoogle {
+min-height: 120px;
+}
+.calculator-grid {
+grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.calculator-card {
+display: grid;
+align-content: start;
+gap: 0.85rem;
+padding: 1rem;
+}
+.calculator-card h3,
+.blog-grid h3 {
+margin: 0;
+}
+.calculator-card p {
+margin: 0;
+}
+.calculator-card button,
+.newsletter-form button,
+.admin-form button,
+.agri-tabs button {
+min-height: 42px;
+padding: 0.58rem 0.88rem;
+color: #ffffff;
+background: var(--accent-strong);
+border: 1px solid var(--accent-strong);
+border-radius: var(--radius);
+font-weight: 800;
+}
+.calculator-card strong {
+display: block;
+padding: 0.75rem;
+background: var(--accent-soft);
+border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--line));
+border-radius: var(--radius);
+overflow-wrap: anywhere;
+}
+.calc-row {
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+align-items: center;
+gap: 0.55rem;
+}
+.calc-row span {
+color: var(--muted);
+text-align: center;
+font-weight: 800;
+}
+.calc-row.three {
+grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.calc-api {
+margin-top: 0.1rem;
+}
+.agriculture-suite {
+grid-column: span 2;
+}
+.agri-tabs {
+display: flex;
+flex-wrap: wrap;
+gap: 0.45rem;
+}
+.agri-tabs button {
+min-height: 36px;
+color: var(--text);
+background: var(--surface-strong);
+border-color: var(--line);
+}
+.agri-tabs button.active {
+color: #ffffff;
+background: var(--accent-strong);
+border-color: var(--accent-strong);
+}
+.agri-tool {
+display: none;
+gap: 0.8rem;
+}
+.agri-tool.active {
+display: grid;
+}
+.newsletter-section {
+order: 13;
+display: grid;
+grid-template-columns: minmax(0, 1fr) minmax(280px, 460px);
+gap: 1rem;
+align-items: center;
+padding: clamp(1rem, 3vw, 1.4rem);
+}
+.newsletter-section h2 {
+margin: 0;
+font-size: 2rem;
+}
+.newsletter-form {
+display: grid;
+grid-template-columns: minmax(0, 1fr) auto;
+gap: 0.6rem;
+}
+.newsletter-form span {
+grid-column: 1 / -1;
+color: var(--muted);
+font-size: 0.88rem;
+}
+.blog-grid article {
+padding: 1rem;
+}
+.blog-grid article a {
+display: inline-flex;
+margin-top: 0.5rem;
+color: var(--accent-strong);
+font-weight: 800;
+}
+.admin-section {
+box-shadow: none;
+}
+.admin-form {
+display: grid;
+grid-template-columns: repeat(5, minmax(0, 1fr)) auto;
+gap: 0.75rem;
+align-items: end;
+padding: 1rem;
+background: var(--surface);
+border: 1px solid var(--line);
+border-radius: var(--radius);
+}
+.admin-list {
+display: grid;
+grid-template-columns: repeat(4, minmax(0, 1fr));
+gap: 0.75rem;
+margin-top: 0.9rem;
+}
+.admin-item {
+padding: 0.75rem;
+background: var(--surface);
+border: 1px solid var(--line);
+border-radius: var(--radius);
+}
+.admin-item strong,
+.admin-item span {
+display: block;
+}
+.overview-grid a,
+.future-grid article {
+padding: 1rem;
+}
+.overview-grid h3,
+.future-grid h3,
+.page-card h2,
+.page-card h3 {
+margin: 0 0 0.45rem;
+}
+.overview-grid p,
+.future-grid p,
+.page-card p,
+.page-card li,
+.guide-copy p {
+color: var(--muted);
+line-height: 1.65;
+}
+.unit-chips {
+display: flex;
+flex-wrap: wrap;
+gap: 0.4rem;
+margin-top: 0.8rem;
+}
+.unit-chips span {
+padding: 0.28rem 0.48rem;
+color: var(--muted);
+background: var(--surface-strong);
+border: 1px solid var(--line);
+border-radius: 6px;
+font-size: 0.78rem;
+}
+.guide-preview {
+order: 11;
+display: grid;
+grid-template-columns: minmax(0, 0.9fr) minmax(280px, 1.1fr);
+gap: 1.2rem;
+align-items: center;
+padding: clamp(1rem, 3vw, 1.6rem);
+}
+.guide-links {
+display: grid;
+grid-template-columns: repeat(2, minmax(0, 1fr));
+gap: 0.65rem;
+}
+.guide-links a {
+padding: 0.75rem;
+background: var(--surface-strong);
+border: 1px solid var(--line);
+border-radius: var(--radius);
+color: var(--text);
+font-weight: 700;
+}
+.guide-links a:hover {
+border-color: var(--accent);
+}
+.site-footer {
+display: flex;
+justify-content: space-between;
+gap: 1.5rem;
+padding: 2rem clamp(1rem, 4vw, 4rem);
+color: var(--muted);
+border-top: 1px solid var(--line);
+}
+.footer-brand {
+margin-bottom: 0.6rem;
+}
+.site-footer p {
+max-width: 560px;
+margin: 0;
+line-height: 1.6;
+}
+.page-shell {
+padding: clamp(0.75rem, 2.5vw, 1.5rem) 0 clamp(2.5rem, 6vw, 5rem);
+}
+/* Footer-gap fix: category hub pages end with a 32px margin-bottom already
+   present on .seo-related-grid ("Related Guides"/"Related Categories").
+   Stacking the full page-shell bottom padding on top of that pushed the
+   footer 70-110px away. Scoped with :has(.seo-related-grid) so it only
+   touches the 27 category hub pages that actually end in that section. */
+.page-shell:has(.seo-related-grid) {
+padding-bottom: clamp(0rem, 0.5vw, 0.75rem);
+}
+/* Single unit-conversion pages (e.g. kg-to-lbs) end in the Related
+   conversions card — a bare .page-grid with no bottom margin of its own
+   (unlike .seo-related-grid above), so the full clamp(2.5rem, 6vw, 5rem)
+   ( = up to 80px) of page-shell bottom padding landed entirely between
+   that card and the footer as one big unbroken gap. Bring it down to the
+   same --section-gap token already used for spacing between the other
+   major sections on this page, so the footer follows with a normal,
+   consistent gap instead of an oversized one. Scoped to .seo-page and to
+   pages that actually end in the bare .page-grid, and explicitly excludes
+   .seo-reference-grid/.seo-related-grid so the category-hub rule above
+   (and guide/about/etc. pages using a plain .page-shell) are unaffected. */
+.seo-page .page-shell:has(.page-grid):not(:has(.seo-reference-grid)):not(:has(.seo-related-grid)) {
+padding-bottom: var(--section-gap);
+}
+.page-hero {
+display: grid;
+gap: 1rem;
+margin-bottom: 1.2rem;
+padding: clamp(1.2rem, 4vw, 2rem);
+background:
+linear-gradient(135deg, color-mix(in srgb, var(--accent-soft) 82%, transparent), color-mix(in srgb, var(--surface) 96%, transparent));
+border: 1px solid var(--line);
+border-radius: var(--radius);
+}
+.page-hero h1 {
+font-size: 4rem;
+}
+.page-hero p {
+max-width: 820px;
+margin: 0;
+color: var(--muted);
+font-size: 1.08rem;
+line-height: 1.7;
+}
+.page-grid {
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 1rem;
+}
+.page-card,
+.page-form {
+padding: 1.1rem;
+}
+.page-card ul,
+.page-card ol {
+margin: 0.6rem 0 0;
+padding-left: 1.25rem;
+}
+.page-cta {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+margin-top: 0.8rem;
+color: #ffffff;
+background: var(--accent-strong);
+border-color: var(--accent-strong);
+font-weight: 800;
+}
+.page-form {
+display: grid;
+gap: 0.85rem;
+}
+.page-form input,
+.page-form textarea {
+min-height: 44px;
+padding: 0.7rem;
+}
+.page-form textarea {
+min-height: 140px;
+resize: vertical;
+}
+@media (max-width: 1160px) {
+.tool-layout {
+grid-template-columns: minmax(210px, 260px) minmax(0, 1fr);
+}
+.converter-panel {
+order: 1;
+}
+.category-panel {
+order: 2;
+}
+.activity-panel {
+order: 3;
+position: static;
+grid-column: 1 / -1;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.overview-grid,
+.future-grid,
+.popular-grid,
+.calculator-grid,
+.blog-grid {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.admin-form {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.admin-list {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+}
+@media (min-width: 821px) and (max-width: 1160px) {
+.tool-layout {
+grid-template-columns: minmax(0, 1fr) minmax(240px, 280px);
+}
+.converter-panel {
+grid-column: 1;
+}
+.category-panel {
+grid-column: 2;
+}
+.activity-panel {
+grid-column: 1 / -1;
+grid-template-columns: 1fr;
+}
+}
+@media (max-width: 820px) {
+.site-header {
+padding-bottom: 0.85rem;
+}
+.ad-band.header-ad {
+margin-top: 0.75rem;
+margin-bottom: 24px;
+}
+.hero {
+min-height: auto;
+}
+.hero h1 {
+font-size: 2.3rem;
+}
+.seo-top h1 {
+font-size: 36px;
+line-height: 1.12;
+text-align: left;
+}
+.hero-subtitle {
+font-size: 0.98rem;
+}
+.section-heading h2,
+.guide-copy h2,
+.future-section h2 {
+font-size: 2.1rem;
+}
+.converter-header h2 {
+font-size: 1.65rem;
+}
+.unit-box input {
+font-size: 1.4rem;
+}
+.result-bar strong {
+font-size: 1.18rem;
+}
+.page-hero h1 {
+font-size: 2.7rem;
+}
+.section-heading,
+.converter-header,
+.result-bar,
+.site-footer {
+align-items: stretch;
+flex-direction: column;
+}
+.metric-strip {
+justify-content: flex-start;
+}
+.tool-layout,
+.guide-preview,
+.newsletter-section,
+.trust-section,
+.page-grid {
+grid-template-columns: 1fr;
+}
+.category-panel {
+position: static;
+}
+.activity-panel {
+position: static;
+max-height: none;
+overflow: visible;
+}
+.category-list {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+max-height: none;
+}
+.converter-grid {
+grid-template-columns: 1fr;
+}
+.swap-button {
+justify-self: center;
+}
+.context-grid,
+.definition-panel,
+.converter-controls,
+.activity-panel,
+.overview-grid,
+.future-grid,
+.popular-grid,
+.calculator-grid,
+.trust-grid,
+.blog-grid,
+.admin-form,
+.admin-list,
+.guide-links {
+grid-template-columns: 1fr;
+}
+.copy-button,
+.favorite-button {
+width: 100%;
+justify-content: center;
+}
+.result-actions,
+.newsletter-form {
+grid-template-columns: 1fr;
+}
+.sidebar-ad {
+position: static;
+min-height: 96px;
+}
+.sidebar-ad .adsbygoogle {
+min-height: 96px;
+}
+.ad-band,
+.converter-ad-slot,
+.in-content-ad {
+min-height: 88px;
+padding: 0.8rem;
+}
+.adsbygoogle {
+min-height: 88px;
+}
+.agriculture-suite {
+grid-column: auto;
+}
+}
+/* Nav/drawer breakpoint - deliberately its own 1024px threshold,
+   independent of the site's general 820px content-layout breakpoint
+   above. Below 1024px (tablet and mobile) the drawer takes over from
+   the horizontal nav; at 1024px and up the classic horizontal nav is
+   shown and the drawer is never shown, and per the JS guard in
+   app.js, never initialized either. */
+@media (max-width: 1023px) {
+.top-nav,
+.category-dropdown-container {
+display: none !important;
+}
+}
+@media (min-width: 1024px) {
+.mobile-menu-toggle,
+.mobile-drawer-overlay,
+.mobile-drawer {
+display: none !important;
+}
+}
+.mobile-menu-toggle {
+order: -1;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+width: 42px;
+height: 42px;
+padding: 0;
+color: var(--text);
+background: var(--surface-strong);
+border: 1px solid var(--line);
+border-radius: var(--radius);
+}
+.mobile-menu-toggle svg {
+width: 22px;
+height: 22px;
+}
+body.mobile-drawer-open {
+overflow: hidden;
+}
+.mobile-drawer-overlay {
+position: fixed;
+inset: 0;
+z-index: 45;
+background: rgba(10, 14, 20, 0.5);
+opacity: 0;
+transition: opacity 220ms ease;
+}
+.mobile-drawer-overlay.open {
+opacity: 1;
+}
+.mobile-drawer {
+position: fixed;
+top: 0;
+left: 0;
+z-index: 50;
+display: flex;
+flex-direction: column;
+width: min(320px, 84vw);
+height: 100%;
+overflow-y: auto;
+overscroll-behavior: contain;
+background: var(--surface);
+border-top-right-radius: 18px;
+border-bottom-right-radius: 18px;
+box-shadow: var(--shadow);
+transform: translateX(-100%);
+transition: transform 260ms ease;
+}
+.mobile-drawer.open {
+transform: translateX(0);
+}
+.mobile-drawer-head {
+display: flex;
+justify-content: flex-end;
+padding: 0.85rem 0.85rem 0.25rem;
+}
+.mobile-drawer-close {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+width: 38px;
+height: 38px;
+padding: 0;
+color: var(--muted);
+background: var(--surface-strong);
+border: 1px solid var(--line);
+border-radius: 50%;
+}
+.mobile-drawer-close svg {
+width: 16px;
+height: 16px;
+}
+.mobile-drawer-nav {
+display: flex;
+flex-direction: column;
+margin: 0;
+padding: 0.4rem 0.6rem;
+list-style: none;
+}
+.mobile-drawer-link {
+display: flex;
+align-items: center;
+gap: 0.75rem;
+min-height: 48px;
+padding: 0.6rem 0.65rem;
+color: var(--text);
+font-size: 0.98rem;
+font-weight: 600;
+text-align: left;
+background: none;
+border: none;
+border-radius: calc(var(--radius) - 2px);
+}
+.mobile-drawer-link:hover,
+.mobile-drawer-link:focus-visible {
+background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+.mobile-drawer-link .drawer-icon {
+flex-shrink: 0;
+width: 19px;
+height: 19px;
+color: var(--muted);
+}
+.mobile-drawer-link span {
+flex: 1 1 auto;
+}
+.mobile-drawer-link .drawer-chevron {
+flex-shrink: 0;
+width: 15px;
+height: 15px;
+color: var(--muted);
+transition: transform 200ms ease;
+}
+.mobile-drawer-categories-toggle[aria-expanded="true"] .drawer-chevron {
+transform: rotate(90deg);
+}
+.mobile-drawer-categories-item {
+display: flex;
+flex-direction: column;
+}
+.mobile-drawer-categories {
+position: static;
+display: block;
+width: 100%;
+max-height: 0;
+overflow: hidden;
+padding: 0 0.6rem;
+transition: max-height 280ms ease;
+}
+.mobile-drawer-categories.open {
+padding: 0 0.6rem 0.6rem;
+}
+.mobile-drawer-category-list {
+display: flex;
+flex-direction: column;
+margin: 0;
+padding: 0.3rem 0 0.3rem 2.4rem;
+list-style: none;
+border-left: 1px solid var(--line);
+margin-left: 1.6rem;
+}
+.mobile-drawer-category-link {
+display: flex;
+align-items: center;
+gap: 0.65rem;
+min-height: 40px;
+padding: 0.4rem 0.5rem;
+color: var(--muted);
+font-size: 0.92rem;
+border-radius: calc(var(--radius) - 2px);
+}
+.mobile-drawer-category-link:hover,
+.mobile-drawer-category-link:focus-visible {
+color: var(--text);
+background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+.mobile-drawer-category-link .drawer-icon {
+flex-shrink: 0;
+width: 18px;
+height: 18px;
+color: var(--muted);
+}
+@media (prefers-reduced-motion: reduce) {
+.mobile-drawer,
+.mobile-drawer-overlay,
+.mobile-drawer-categories,
+.mobile-drawer-categories-toggle .drawer-chevron {
+transition-duration: 0.01ms !important;
+}
+}
+@media (max-width: 520px) {
+.brand span {
+max-width: 190px;
+white-space: normal;
+line-height: 1.1;
+}
+.theme-toggle {
+min-height: 38px;
+}
+.hero-search input {
+min-height: 48px;
+}
+.hero h1 {
+font-size: 1.9rem;
+}
+.seo-top h1 {
+font-size: 32px;
+line-height: 1.12;
+text-align: left;
+}
+.hero-subtitle {
+margin: 0.4rem 0 1rem;
+}
+.hero .popular-actions {
+margin-top: 0.6rem;
+gap: 0.45rem;
+}
+.hero .recent-searches {
+margin-top: 0.45rem;
+}
+.section-heading h2,
+.guide-copy h2,
+.future-section h2 {
+font-size: 1.8rem;
+}
+.page-hero h1 {
+font-size: 2.3rem;
+}
+.category-list {
+grid-template-columns: 1fr;
+}
+.unit-box {
+padding: 0.75rem;
+}
+}
+@media (prefers-reduced-motion: reduce) {
+*,
+*::before,
+*::after {
+scroll-behavior: auto !important;
+transition-duration: 0.01ms !important;
+animation-duration: 0.01ms !important;
+animation-iteration-count: 1 !important;
+}
+}
+.popular-conversions-hub,
+.all-conversions-hub {
+width: min(1420px, calc(100% - 2rem));
+margin: 2rem auto 0;
+padding: 1.25rem;
+background: color-mix(in srgb, var(--surface) 96%, transparent);
+border: 1px solid var(--line);
+border-radius: var(--radius);
+box-shadow: var(--shadow-sm);
+}
+.popular-conversions-hub .section-heading,
+.all-conversions-hub .section-heading {
+margin-bottom: 1rem;
+}
+.all-conversions-hub .compact-search {
+width: 100%;
+}
+.conversions-grid {
+display: grid;
+grid-template-columns: repeat(4, minmax(0, 1fr));
+gap: 0.6rem;
+max-height: 640px;
+overflow-y: auto;
+padding-right: 0.15rem;
+}
+.conversion-card {
+display: block;
+padding: 0.65rem 0.85rem;
+background: color-mix(in srgb, var(--surface-strong) 72%, transparent);
+border: 1px solid var(--line);
+border-radius: calc(var(--radius) - 2px);
+color: var(--text);
+line-height: 1.4;
+font-size: 0.92rem;
+}
+.conversion-card:hover,
+.conversion-card:focus-visible {
+border-color: var(--accent-strong);
+color: var(--accent-strong);
+}
+@media (max-width: 900px) {
+.popular-conversions-hub .popular-grid,
+.conversions-grid {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+}
+@media (max-width: 560px) {
+.popular-conversions-hub .popular-grid,
+.conversions-grid {
+grid-template-columns: 1fr;
+}
+}
+@media (max-width: 900px) and (min-width: 601px) {
+.sitemap-extra-grid {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+}
+@media (max-width: 600px) {
+.sitemap-extra-grid {
+grid-template-columns: 1fr;
+}
+}
+.uc-cookie-banner {
+position: fixed;
+left: 0;
+right: 0;
+bottom: 0;
+z-index: 9999;
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+justify-content: space-between;
+gap: 12px;
+padding: 14px 18px;
+background: #10262b;
+color: #f2f7f6;
+box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.25);
+font-size: 0.92rem;
+line-height: 1.4;
+}
+.uc-cookie-banner-text {
+margin: 0;
+max-width: 68ch;
+flex: 1 1 320px;
+}
+.uc-cookie-banner-text a {
+color: #7fe0d6;
+text-decoration: underline;
+}
+.uc-cookie-banner-actions {
+display: flex;
+gap: 10px;
+flex: 0 0 auto;
+}
+.uc-cookie-banner-actions button {
+border: 1px solid transparent;
+border-radius: 6px;
+padding: 8px 16px;
+font-size: 0.9rem;
+cursor: pointer;
+}
+.uc-cookie-accept {
+background: #0f9f9a;
+color: #10262b;
+}
+.uc-cookie-decline {
+background: transparent;
+color: #f2f7f6;
+border-color: rgba(242, 247, 246, 0.5);
+}
+/* Mobile-only cookie banner tweak. Only screens <=768px are affected;
+   the base .uc-cookie-banner rules above (used on desktop/tablet) are untouched.
+   No height/overflow limits, no font-size changes, no text changes -
+   the banner simply sizes itself to its content with slightly less
+   top/bottom padding than on desktop, and a tighter, centered,
+   single-line button row. */
+@media (max-width: 768px) {
+.uc-cookie-banner {
+padding-top: 10px;
+padding-bottom: 10px;
+gap: 11px;
+}
+.uc-cookie-banner-actions {
+margin-left: auto;
+margin-right: auto;
+gap: 12px;
+}
+.uc-cookie-banner-actions button {
+min-height: 44px;
+}
+}
+.link-button {
+background: none;
+border: none;
+padding: 0;
+margin: 0;
+color: inherit;
+text-decoration: underline;
+font: inherit;
+cursor: pointer;
+display: inline;
+}
+
+/* Admin dashboard page (/admin/) */
+.admin-dashboard {
+display: grid;
+gap: 1.4rem;
+}
+.admin-card {
+min-width: 0;
+padding: 1.3rem;
+background: color-mix(in srgb, var(--surface) 96%, transparent);
+border: 1px solid var(--line);
+border-radius: var(--radius);
+box-shadow: var(--shadow);
+}
+.admin-card > .section-heading {
+margin-bottom: 1.1rem;
+}
+.admin-unit-form {
+display: grid;
+grid-template-columns: repeat(2, minmax(0, 1fr));
+gap: 1rem 1.2rem;
+}
+.admin-unit-form .admin-field-wide {
+grid-column: 1 / -1;
+}
+.admin-unit-form label {
+display: grid;
+gap: 0.35rem;
+color: var(--muted);
+font-size: 0.84rem;
+font-weight: 800;
+}
+.admin-unit-form input,
+.admin-unit-form select {
+width: 100%;
+min-height: 44px;
+padding: 0 0.7rem;
+color: var(--text);
+background: var(--surface);
+border: 1px solid var(--line);
+border-radius: var(--radius);
+outline: none;
+transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+.admin-unit-form input:focus,
+.admin-unit-form select:focus {
+border-color: var(--accent);
+box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+.admin-form-actions {
+grid-column: 1 / -1;
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+gap: 0.75rem;
+margin-top: 0.2rem;
+}
+.admin-form-actions button {
+min-height: 44px;
+padding: 0.6rem 1.1rem;
+border-radius: var(--radius);
+font-weight: 800;
+cursor: pointer;
+}
+.admin-btn-primary {
+color: #ffffff;
+background: var(--accent-strong);
+border: 1px solid var(--accent-strong);
+}
+.admin-btn-primary:hover {
+transform: translateY(-1px);
+}
+.admin-btn-secondary {
+color: var(--text);
+background: var(--surface);
+border: 1px solid var(--line);
+}
+.admin-btn-secondary:hover {
+border-color: var(--accent);
+}
+.admin-toolbar {
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+justify-content: space-between;
+gap: 0.9rem;
+margin-bottom: 1rem;
+}
+.admin-search {
+flex: 1 1 260px;
+max-width: 360px;
+min-height: 44px;
+padding: 0 0.85rem;
+color: var(--text);
+background: var(--surface);
+border: 1px solid var(--line);
+border-radius: var(--radius);
+outline: none;
+}
+.admin-search:focus {
+border-color: var(--accent);
+box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+.admin-tools {
+display: flex;
+flex-wrap: wrap;
+gap: 0.6rem;
+}
+.admin-tools button {
+min-height: 40px;
+padding: 0.5rem 0.85rem;
+color: var(--text);
+background: var(--surface);
+border: 1px solid var(--line);
+border-radius: var(--radius);
+font-weight: 800;
+cursor: pointer;
+transition: transform 160ms ease, border-color 160ms ease;
+}
+.admin-tools button:hover {
+transform: translateY(-1px);
+border-color: var(--accent);
+}
+.admin-tools .admin-btn-danger {
+color: var(--danger);
+border-color: color-mix(in srgb, var(--danger) 45%, var(--line));
+}
+.admin-tools .admin-btn-danger:hover {
+border-color: var(--danger);
+}
+.admin-table-wrap {
+overflow-x: auto;
+border: 1px solid var(--line);
+border-radius: var(--radius);
+}
+.admin-table {
+width: 100%;
+border-collapse: collapse;
+min-width: 640px;
+}
+.admin-table th,
+.admin-table td {
+padding: 0.75rem 0.9rem;
+text-align: left;
+border-bottom: 1px solid var(--line);
+font-size: 0.92rem;
+vertical-align: top;
+}
+.admin-table th {
+color: var(--muted);
+font-size: 0.78rem;
+text-transform: uppercase;
+letter-spacing: 0.04em;
+background: var(--surface-strong);
+}
+.admin-table tbody tr:last-child td {
+border-bottom: none;
+}
+.admin-table tbody tr:hover {
+background: color-mix(in srgb, var(--accent-soft) 45%, transparent);
+}
+.admin-row-actions {
+display: flex;
+gap: 0.5rem;
+white-space: nowrap;
+}
+.admin-row-actions button {
+min-height: 34px;
+padding: 0.35rem 0.7rem;
+border-radius: var(--radius);
+font-weight: 800;
+font-size: 0.84rem;
+cursor: pointer;
+color: var(--text);
+background: var(--surface);
+border: 1px solid var(--line);
+}
+.admin-row-actions button:hover {
+border-color: var(--accent);
+}
+.admin-row-actions .admin-delete-btn {
+color: var(--danger);
+border-color: color-mix(in srgb, var(--danger) 45%, var(--line));
+}
+.admin-row-actions .admin-delete-btn:hover {
+border-color: var(--danger);
+}
+.admin-empty-state {
+padding: 1.4rem;
+color: var(--muted);
+text-align: center;
+}
+.admin-form-status {
+grid-column: 1 / -1;
+color: var(--muted);
+font-size: 0.88rem;
+min-height: 1.2rem;
+}
+@media (max-width: 820px) {
+.admin-unit-form {
+grid-template-columns: 1fr;
+}
+.admin-form-actions {
+flex-direction: column;
+align-items: stretch;
+}
+.admin-form-actions button {
+width: 100%;
+justify-content: center;
+}
+.admin-toolbar {
+flex-direction: column;
+align-items: stretch;
+}
+.admin-search {
+max-width: none;
+}
+.admin-tools {
+flex-direction: column;
+align-items: stretch;
+}
+.admin-tools button {
+width: 100%;
+justify-content: center;
+}
+}
+/* Phase 2 homepage content enhancements */
+.stats-section {
+order: 2;
+}
+.overview-grid a {
+display: block;
+transition: border-color 160ms ease, transform 160ms ease;
+}
+.overview-grid a:hover,
+.overview-grid a:focus-visible {
+border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
+transform: translateY(-2px);
+outline: none;
+}
+.mission-section {
+order: 15;
+width: min(1420px, calc(100% - 2rem));
+margin: 0 auto;
+padding: clamp(2rem, 5vw, 4rem) 0;
+text-align: center;
+}
+.mission-section p {
+max-width: 760px;
+margin: 0.75rem auto 0;
+color: var(--muted);
+line-height: 1.65;
+}
+/* ==========================================================================
+   Homepage vertical rhythm system
+   --------------------------------------------------------------------------
+   Every major homepage section previously supplied its own top+bottom
+   padding (or, for ad slots, its own margin) to create the gap between
+   itself and its neighbors. Because these are separate sibling elements,
+   two adjacent "padded" sections stacked their padding together instead of
+   sharing a single gap, so some boundaries ended up roughly twice as tall
+   as others (and a couple of sections used an entirely different, smaller
+   scale). That produced the uneven whitespace across the page.
+   This block makes <main> the single source of truth for spacing between
+   top-level homepage sections via `gap`, and zeroes out each section's own
+   outer vertical padding/margin so nothing stacks with it. Internal
+   padding for boxed sections (ad slots, the newsletter panel, the guide
+   preview panel) is left untouched since that's content padding inside
+   the box, not spacing between sections. --home-rhythm uses the same
+   clamp() already used by most sections, so it scales the same way on
+   mobile as it did before.
+   Scoped to body.homepage (set only on index.html) so the .tool-section,
+   .popular-conversions, and .ad-band classes — which are also used on
+   category, converter, and other SEO pages — are completely unaffected
+   anywhere else on the site.
+   ========================================================================== */
+body.homepage main {
+gap: var(--home-rhythm);
+margin-bottom: var(--home-rhythm);
+}
+body.homepage .tool-section,
+body.homepage .category-overview,
+body.homepage .popular-conversions,
+body.homepage .tools-section,
+body.homepage .business-section,
+body.homepage .why-section,
+body.homepage .faq-section,
+body.homepage .featured-guides,
+body.homepage .blog-system,
+body.homepage .trust-section,
+body.homepage .mission-section {
+padding-top: 0;
+padding-bottom: 0;
+}
+body.homepage .ad-band {
+margin-top: 0;
+margin-bottom: 0;
+}
+/* ==========================================================================
+   About page vertical rhythm system
+   --------------------------------------------------------------------------
+   <main> is a flex column (see the base `main` rule), so `gap` is the
+   single source of truth for spacing between top-level About page
+   sections. Two things were stacking extra space on top of that gap:
+   1) Each plain section (mission/why/tools/business/trust/category-overview/
+      popular-conversions) supplied its own top+bottom padding.
+   2) `.page-hero` has its own margin-bottom and `.in-content-ad` has its
+      own top+bottom margin (both are "boxed" components, so that margin
+      is genuinely extra outer spacing, not internal box padding).
+   Zeroing both of those and relying solely on main's gap collapses the
+   double-spacing into a single, consistent ~40-56px rhythm between every
+   section on the page, including hero-to-ad and ad-to-next-section.
+   Scoped to body.about-page (set only on about.html) so other pages that
+   reuse these same section classes are unaffected.
+   ========================================================================== */
+body.about-page main {
+gap: clamp(2.5rem, 4vw, 3.5rem);
+margin-bottom: clamp(2.5rem, 4vw, 3.5rem);
+}
+body.about-page .page-hero {
+margin-bottom: 0;
+}
+body.about-page .mission-section,
+body.about-page .why-section,
+body.about-page .tools-section,
+body.about-page .business-section,
+body.about-page .trust-section,
+body.about-page .category-overview,
+body.about-page .popular-conversions {
+padding-top: 0;
+padding-bottom: 0;
+}
+body.about-page .ad-band,
+body.about-page .in-content-ad {
+margin-top: 0;
+margin-bottom: 0;
+}
+
+/* ==========================================================================
+   GUIDES PAGE (knowledge center) — scoped additions, reuses existing tokens
+   (--accent, --surface, --line, --shadow, --radius, --muted, --text, --warm).
+   Added for the guides.html redesign: hero stats, category chips, search,
+   featured/popular/recent/related guide grids, and guide cards.
+   ========================================================================== */
+.guides-hero {
+gap: 1.1rem;
+}
+.guides-hero .page-hero-intro {
+max-width: 760px;
+}
+.guide-stats {
+display: flex;
+flex-wrap: wrap;
+gap: 0.6rem;
+margin-top: 0.3rem;
+}
+.guide-stat {
+display: flex;
+align-items: baseline;
+gap: 0.4rem;
+padding: 0.55rem 0.9rem;
+background: color-mix(in srgb, var(--surface) 92%, transparent);
+border: 1px solid var(--line);
+border-radius: 999px;
+box-shadow: var(--shadow-sm, none);
+}
+.guide-stat strong {
+color: var(--accent-strong);
+font-size: 1.05rem;
+font-weight: 900;
+}
+.guide-stat span {
+color: var(--muted);
+font-size: 0.86rem;
+font-weight: 700;
+}
+.guide-stat--trust {
+gap: 0.5rem;
+color: var(--text);
+background: var(--accent-soft);
+border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
+}
+.guide-stat--trust .guide-stat-icon {
+font-size: 1rem;
+}
+.guide-stat--trust span {
+color: var(--text);
+font-weight: 600;
+}
+.guides-toolbar {
+position: sticky;
+top: calc(var(--header-height) + 0.6rem);
+z-index: 5;
+display: grid;
+gap: 0.75rem;
+margin: 0 0 1.6rem;
+padding: 0.85rem;
+background: color-mix(in srgb, var(--surface) 94%, transparent);
+backdrop-filter: blur(8px);
+border: 1px solid var(--line);
+border-radius: var(--radius);
+box-shadow: var(--shadow);
+}
+.guides-search {
+position: relative;
+}
+.guides-search input {
+width: 100%;
+min-height: 48px;
+padding: 0 1rem 0 2.6rem;
+color: var(--text);
+background: var(--surface);
+border: 1px solid var(--line);
+border-radius: var(--radius);
+font-size: 0.98rem;
+outline: none;
+transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+.guides-search input:focus {
+border-color: var(--accent);
+box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+.guides-search-icon {
+position: absolute;
+left: 0.9rem;
+top: 50%;
+transform: translateY(-50%);
+color: var(--muted);
+pointer-events: none;
+font-size: 0.95rem;
+}
+.guides-chips {
+display: flex;
+flex-wrap: wrap;
+gap: 0.5rem;
+}
+.guide-chip {
+display: inline-flex;
+align-items: center;
+gap: 0.35rem;
+min-height: 38px;
+padding: 0.4rem 0.85rem;
+color: var(--text);
+background: var(--surface);
+border: 1px solid var(--line);
+border-radius: 999px;
+font-size: 0.88rem;
+font-weight: 700;
+white-space: nowrap;
+cursor: pointer;
+transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, color 160ms ease;
+}
+.guide-chip:hover {
+transform: translateY(-1px);
+border-color: var(--accent);
+}
+.guide-chip.is-active {
+color: #ffffff;
+background: var(--accent-strong);
+border-color: var(--accent-strong);
+}
+.guide-chip--soon {
+position: relative;
+color: var(--muted);
+background: color-mix(in srgb, var(--surface-strong) 70%, transparent);
+border-style: dashed;
+cursor: pointer;
+}
+.guide-chip--soon:hover {
+border-color: var(--line);
+transform: none;
+}
+.guide-chip-soon {
+padding: 0.08rem 0.4rem;
+color: var(--accent-strong);
+background: var(--accent-soft);
+border-radius: 999px;
+font-size: 0.66rem;
+font-weight: 800;
+text-transform: uppercase;
+letter-spacing: 0.02em;
+}
+.guides-section {
+margin: 0 0 clamp(2rem, 4vw, 3rem);
+}
+.guides-section .section-heading {
+align-items: baseline;
+margin-bottom: 1.1rem;
+}
+.guides-section .section-heading h2 {
+font-size: 1.9rem;
+}
+.guides-section-sub {
+margin: 0.2rem 0 0;
+color: var(--muted);
+font-size: 0.95rem;
+}
+.guides-result-count {
+margin: -0.4rem 0 1rem;
+color: var(--muted);
+font-size: 0.88rem;
+}
+.guide-grid {
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 1.1rem;
+}
+.guide-grid--compact {
+grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.guide-card {
+position: relative;
+background: color-mix(in srgb, var(--surface) 96%, transparent);
+border: 1px solid var(--line);
+border-radius: var(--radius);
+box-shadow: var(--shadow);
+overflow: hidden;
+transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+.guide-card:hover,
+.guide-card:focus-within {
+transform: translateY(-5px);
+border-color: color-mix(in srgb, var(--accent) 55%, var(--line));
+box-shadow: 0 24px 46px color-mix(in srgb, var(--accent) 16%, rgba(21, 32, 46, 0.14));
+}
+.guide-card:hover .guide-card-icon,
+.guide-card:focus-within .guide-card-icon {
+transform: scale(1.12) rotate(-6deg);
+}
+.guide-card:hover .guide-card-cta span,
+.guide-card:focus-within .guide-card-cta span {
+transform: translateX(4px);
+}
+.guide-card-link {
+display: flex;
+flex-direction: column;
+height: 100%;
+padding: 1.15rem 1.15rem 1.3rem;
+color: inherit;
+text-decoration: none;
+}
+.guide-card-link:focus-visible {
+outline: 2px solid var(--accent);
+outline-offset: -2px;
+}
+.guide-card-top {
+display: flex;
+align-items: center;
+gap: 0.6rem;
+margin-bottom: 0.75rem;
+}
+.guide-card-icon {
+display: inline-grid;
+place-items: center;
+width: 40px;
+height: 40px;
+flex: 0 0 auto;
+font-size: 1.15rem;
+background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 20%, var(--surface-strong)), var(--surface-strong));
+border-radius: 10px;
+transition: transform 220ms ease;
+}
+.guide-card-badge {
+padding: 0.24rem 0.6rem;
+color: var(--accent-strong);
+background: color-mix(in srgb, var(--accent) 14%, transparent);
+border-radius: 999px;
+font-size: 0.72rem;
+font-weight: 800;
+text-transform: uppercase;
+letter-spacing: 0.02em;
+}
+.guide-card h3 {
+margin: 0 0 0.4rem;
+color: var(--text);
+font-size: 1.12rem;
+line-height: 1.3;
+}
+.guide-card p {
+flex: 1 0 auto;
+margin: 0 0 0.9rem;
+color: var(--muted);
+font-size: 0.92rem;
+line-height: 1.55;
+}
+.guide-card-meta {
+display: flex;
+align-items: center;
+gap: 0.4rem;
+margin-bottom: 0.75rem;
+color: var(--muted);
+font-size: 0.8rem;
+font-weight: 700;
+}
+.guide-card-dot {
+opacity: 0.6;
+}
+.guide-card-cta {
+display: inline-flex;
+align-items: center;
+gap: 0.3rem;
+margin-top: auto;
+color: var(--accent-strong);
+font-weight: 800;
+font-size: 0.92rem;
+}
+.guide-card-cta span {
+display: inline-block;
+transition: transform 200ms ease;
+}
+.guide-card--featured {
+border-top: 3px solid var(--accent);
+}
+.guide-card--featured .guide-card-link {
+padding-top: 1.05rem;
+}
+.guide-card--ranked .guide-card-link {
+padding-top: 1.3rem;
+}
+.guide-rank {
+position: absolute;
+top: 0.5rem;
+right: 0.85rem;
+color: color-mix(in srgb, var(--accent) 26%, transparent);
+font-size: 2.4rem;
+font-weight: 900;
+line-height: 1;
+pointer-events: none;
+}
+.guide-card--compact .guide-card-link {
+padding: 1rem;
+}
+.guide-card--compact h3 {
+font-size: 1.02rem;
+}
+.guide-card--compact p {
+-webkit-line-clamp: 2;
+display: -webkit-box;
+-webkit-box-orient: vertical;
+overflow: hidden;
+}
+.guides-empty {
+display: grid;
+justify-items: center;
+gap: 0.5rem;
+padding: 2.4rem 1rem;
+color: var(--muted);
+text-align: center;
+background: color-mix(in srgb, var(--surface-strong) 60%, transparent);
+border: 1px dashed var(--line);
+border-radius: var(--radius);
+}
+.guides-empty strong {
+color: var(--text);
+font-size: 1.05rem;
+}
+.guides-empty a {
+color: var(--accent-strong);
+font-weight: 800;
+}
+.guides-quicktools {
+display: flex;
+flex-wrap: wrap;
+gap: 0.75rem;
+}
+.guides-quicktools a {
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+padding: 0.7rem 1rem;
+color: var(--text);
+background: var(--surface);
+border: 1px solid var(--line);
+border-radius: var(--radius);
+font-weight: 700;
+font-size: 0.92rem;
+transition: transform 160ms ease, border-color 160ms ease;
+}
+.guides-quicktools a:hover {
+transform: translateY(-2px);
+border-color: var(--accent);
+}
+@media (max-width: 1020px) {
+.guide-grid,
+.guide-grid--compact {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+}
+@media (max-width: 820px) {
+.guides-toolbar {
+top: calc(var(--header-height) + 0.35rem);
+padding: 0.7rem;
+}
+.guides-chips {
+flex-wrap: nowrap;
+overflow-x: auto;
+padding-bottom: 0.2rem;
+scrollbar-width: thin;
+}
+.guides-chips .guide-chip {
+flex: 0 0 auto;
+}
+.guide-grid,
+.guide-grid--compact {
+grid-template-columns: 1fr;
+}
+.guide-stats {
+gap: 0.45rem;
+}
+}
+@media (prefers-reduced-motion: reduce) {
+.guide-card,
+.guide-card-icon,
+.guide-card-cta span,
+.guide-chip {
+transition: none !important;
+}
+.guide-card:hover {
+transform: none;
+}
+}
